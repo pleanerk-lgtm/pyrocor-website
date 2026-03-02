@@ -11,7 +11,7 @@
   <title>Pyrocor | Global Commodity Trading House</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ============================================================
        PYROCOR — DESIGN SYSTEM
@@ -1088,13 +1088,14 @@
 
     /* ============================================================
        ANIMATIONS & REVEAL
+       Only hide when JS confirmed running - prevents blank page.
     ============================================================ */
-    .reveal {
+    .js-loaded .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible {
+    .js-loaded .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -2194,7 +2195,7 @@
         Submit Trade Enquiry
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </a>
-      <a href="mailto:trade@pyrocor.co.za" class="btn btn-outline">trade@pyrocor.co.za</a>
+      <a href="/cdn-cgi/l/email-protection#87f3f5e6e3e2c7f7fef5e8e4e8f5a9e4e8a9fde6" class="btn btn-outline"><span class="__cf_email__" data-cfemail="77030516131237070e0518141805591418590d16">[email&#160;protected]</span></a>
     </div>
   </div>
 </div>
@@ -2221,15 +2222,15 @@
           </div>
           <div class="contact-item">
             <div class="contact-item-label">Trade Enquiries</div>
-            <div class="contact-item-value"><a href="mailto:trade@pyrocor.co.za" style="color:var(--grey-light);text-decoration:none;">trade@pyrocor.co.za</a></div>
+            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#63171102070623131a110c000c114d000c4d1902" style="color:var(--grey-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="3d494f5c59587d4d444f525e524f135e5213475c">[email&#160;protected]</span></a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-label">IOR / EOR Services</div>
-            <div class="contact-item-value"><a href="mailto:compliance@pyrocor.co.za" style="color:var(--grey-light);text-decoration:none;">compliance@pyrocor.co.za</a></div>
+            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#1d7e72706d71747c737e785d6d646f727e726f337e7233677c" style="color:var(--grey-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="bfdcd0d2cfd3d6ded1dcdaffcfc6cdd0dcd0cd91dcd091c5de">[email&#160;protected]</span></a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-label">Advisory Services</div>
-            <div class="contact-item-value"><a href="mailto:advisory@pyrocor.co.za" style="color:var(--grey-light);text-decoration:none;">advisory@pyrocor.co.za</a></div>
+            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#c5a4a1b3acb6aab7bc85b5bcb7aaa6aab7eba6aaebbfa4" style="color:var(--grey-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="056461736c766a777c45757c776a666a772b666a2b7f64">[email&#160;protected]</span></a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-label">Operations Hours</div>
@@ -2334,7 +2335,7 @@
         <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
           <div style="font-size:2rem; margin-bottom:1rem;">✓</div>
           <h3>Enquiry Received</h3>
-          <p>Thank you for your trade enquiry. A member of the Pyrocor team will respond within one business day. For urgent requirements, please contact <a href="mailto:trade@pyrocor.co.za" style="color:var(--copper);">trade@pyrocor.co.za</a> directly.</p>
+          <p>Thank you for your trade enquiry. A member of the Pyrocor team will respond within one business day. For urgent requirements, please contact <a href="/cdn-cgi/l/email-protection#3b4f495a5f5e7b4b42495458544915585415415a" style="color:var(--copper);"><span class="__cf_email__" data-cfemail="a9dddbc8cdcce9d9d0dbc6cac6db87cac687d3c8">[email&#160;protected]</span></a> directly.</p>
         </div>
       </div>
     </div>
@@ -2390,7 +2391,7 @@
           <li><a href="#operations">Global Operations</a></li>
           <li><a href="#esg">ESG Policy</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="mailto:trade@pyrocor.co.za">trade@pyrocor.co.za</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#6a1e180b0e0f2a1a13180509051844090544100b"><span class="__cf_email__" data-cfemail="2d595f4c49486d5d545f424e425f034e4203574c">[email&#160;protected]</span></a></li>
         </ul>
       </nav>
     </div>
@@ -2419,7 +2420,7 @@
 <!-- ============================================================
      JAVASCRIPT
 ============================================================ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ---- TRADING TABS ----
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2475,36 +2476,3 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  reveals.forEach(el => revealObserver.observe(el));
-
-  // Immediately reveal hero elements
-  document.querySelectorAll('#hero .reveal').forEach(el => {
-    setTimeout(() => el.classList.add('visible'), 100);
-  });
-
-  // ---- CONTACT FORM ----
-  const form = document.getElementById('tradeForm');
-  const formSuccess = document.getElementById('formSuccess');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Basic validation
-    const required = form.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach(field => {
-      field.style.borderColor = '';
-      if (!field.value.trim()) {
-        field.style.borderColor = '#8B1A1A';
-        valid = false;
-      }
-    });
-
-    if (!valid) {
-      const firstError = form.querySelector('[style*="border-color"]');
-     
