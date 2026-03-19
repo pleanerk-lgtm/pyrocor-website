@@ -1,2479 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Pyrocor — Global commodity trading house specialising in protein trade, Importer of Record (IOR), Exporter of Record (EOR), and strategic advisory services for governments and institutional buyers worldwide." />
-  <meta name="keywords" content="global commodity trading, protein trading, chicken beef mutton, importer of record, exporter of record, IOR EOR, trade advisory, cold chain logistics" />
-  <meta property="og:title" content="Pyrocor | Global Commodity Trading House" />
-  <meta property="og:description" content="Precision. Scale. Trust. Pyrocor operates at the intersection of global protein trade and institutional intelligence." />
-  <meta property="og:type" content="website" />
-  <title>Pyrocor | Global Commodity Trading House</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* ============================================================
-       PYROCOR — DESIGN SYSTEM
-       Color Palette:
-       --navy-deep:    #0A0F1E  (primary background)
-       --navy-mid:     #111828  (cards, sections)
-       --navy-light:   #1A2540  (borders, dividers)
-       --copper:       #B87333  (primary accent)
-       --copper-light: #D4943A  (hover states)
-       --copper-glow:  #E8A84E  (highlights)
-       --red-deep:     #8B1A1A  (secondary accent)
-       --white:        #FFFFFF
-       --off-white:    #F5F3EF  (text on dark)
-       --grey-mid:     #8A909E
-       --grey-light:   #C4C9D4
-       Typography:
-       Headings: Playfair Display (serif, authoritative)
-       Body:     Inter (clean, readable)
-       Labels:   Space Grotesk (technical, modern)
-    ============================================================ */
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy-deep: #0A0F1E;
-      --navy-mid: #111828;
-      --navy-light: #1A2540;
-      --navy-border: #243050;
-      --copper: #B87333;
-      --copper-light: #D4943A;
-      --copper-glow: #E8A84E;
-      --red-deep: #8B1A1A;
-      --white: #FFFFFF;
-      --off-white: #F5F3EF;
-      --grey-mid: #8A909E;
-      --grey-light: #C4C9D4;
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      background-color: var(--navy-deep);
-      color: var(--off-white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* ---- SCROLLBAR ---- */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--navy-deep); }
-    ::-webkit-scrollbar-thumb { background: var(--copper); border-radius: 3px; }
-
-    /* ---- TYPOGRAPHY ---- */
-    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.15; font-weight: 700; }
-    h4, h5, h6, .label { font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
-
-    .display-xl { font-size: clamp(2.8rem, 6vw, 5.5rem); letter-spacing: -0.02em; }
-    .display-lg { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -0.02em; }
-    .display-md { font-size: clamp(1.6rem, 3vw, 2.4rem); }
-    .display-sm { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
-    .body-lg { font-size: 1.125rem; line-height: 1.8; }
-    .body-md { font-size: 1rem; line-height: 1.75; }
-    .body-sm { font-size: 0.875rem; }
-
-    .overline {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--copper);
-    }
-
-    .text-copper { color: var(--copper); }
-    .text-grey { color: var(--grey-mid); }
-    .text-light { color: var(--grey-light); }
-    .text-white { color: var(--white); }
-
-    /* ---- LAYOUT ---- */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-    .container-narrow { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
-    .section { padding: 6rem 0; }
-    .section-lg { padding: 8rem 0; }
-    .section-sm { padding: 4rem 0; }
-
-    /* ---- DIVIDER ---- */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--navy-border), transparent);
-      margin: 0;
-    }
-
-    .copper-line {
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--copper);
-      margin-bottom: 1.5rem;
-    }
-
-    /* ---- BUTTONS ---- */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.875rem 2rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary {
-      background: var(--copper);
-      color: var(--navy-deep);
-    }
-    .btn-primary:hover { background: var(--copper-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,115,51,0.35); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--off-white);
-      border: 1px solid var(--navy-border);
-    }
-    .btn-outline:hover { border-color: var(--copper); color: var(--copper); transform: translateY(-2px); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--copper);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--copper);
-      letter-spacing: 0.12em;
-    }
-    .btn-ghost:hover { color: var(--copper-light); border-color: var(--copper-light); }
-
-    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
-
-    /* ---- NAVIGATION ---- */
-    #navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 1.25rem 0;
-      transition: var(--transition);
-    }
-
-    #navbar.scrolled {
-      background: rgba(10, 15, 30, 0.97);
-      backdrop-filter: blur(20px);
-      padding: 0.875rem 0;
-      border-bottom: 1px solid var(--navy-border);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-    }
-
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      position: relative;
-    }
-
-    .logo-mark svg { width: 100%; height: 100%; }
-
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.05em;
-    }
-
-    .logo-text span { color: var(--copper); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey-light);
-      text-decoration: none;
-      transition: color var(--transition);
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--copper);
-      transition: width var(--transition);
-    }
-
-    .nav-links a:hover { color: var(--off-white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta { margin-left: 1rem; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--off-white);
-      transition: var(--transition);
-    }
-
-    /* ---- MOBILE MENU ---- */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--navy-deep);
-      z-index: 999;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--off-white);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    .mobile-menu a:hover { color: var(--copper); }
-    .mobile-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      color: var(--off-white);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* ============================================================
-       HERO SECTION
-    ============================================================ */
-    #hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(10,15,30,0.97) 0%, rgba(10,15,30,0.8) 50%, rgba(10,15,30,0.92) 100%),
-        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80') center/cover no-repeat;
-      z-index: 0;
-    }
-
-    /* Animated grid overlay */
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(184,115,51,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(184,115,51,0.05) 1px, transparent 1px);
-      background-size: 80px 80px;
-      z-index: 1;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(80px); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding-top: 8rem;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      border: 1px solid rgba(184,115,51,0.4);
-      margin-bottom: 2rem;
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--copper);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.3); }
-    }
-
-    .hero-headline { max-width: 900px; margin-bottom: 1.5rem; }
-    .hero-headline em { font-style: normal; color: var(--copper); }
-
-    .hero-sub {
-      max-width: 580px;
-      color: var(--grey-light);
-      font-size: 1.1rem;
-      line-height: 1.85;
-      margin-bottom: 3rem;
-    }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 5rem; }
-
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--navy-border);
-      flex-wrap: wrap;
-    }
-
-    .stat-item {}
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--white);
-      display: block;
-    }
-    .stat-number span { color: var(--copper); }
-    .stat-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-    }
-
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .scroll-indicator span {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(var(--copper), transparent);
-      animation: scrollAnim 2s ease-in-out infinite;
-    }
-    @keyframes scrollAnim {
-      0% { transform: scaleY(0); transform-origin: top; }
-      50% { transform: scaleY(1); transform-origin: top; }
-      51% { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
-
-    /* ============================================================
-       TICKER / MARQUEE
-    ============================================================ */
-    .ticker {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--navy-border);
-      border-bottom: 1px solid var(--navy-border);
-      padding: 0.875rem 0;
-      overflow: hidden;
-    }
-    .ticker-inner {
-      display: flex;
-      gap: 4rem;
-      animation: ticker 30s linear infinite;
-      white-space: nowrap;
-    }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-      flex-shrink: 0;
-    }
-    .ticker-item strong { color: var(--copper); }
-    .ticker-dot { width: 4px; height: 4px; background: var(--navy-border); border-radius: 50%; }
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ============================================================
-       WHAT WE DO — PILLARS
-    ============================================================ */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5px;
-      background: var(--navy-border);
-      border: 1px solid var(--navy-border);
-      margin-top: 4rem;
-    }
-
-    .pillar-card {
-      background: var(--navy-mid);
-      padding: 3rem 2.5rem;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pillar-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--copper);
-      transform: scaleX(0);
-      transition: transform var(--transition);
-    }
-
-    .pillar-card:hover { background: #141e35; }
-    .pillar-card:hover::before { transform: scaleX(1); }
-
-    .pillar-icon {
-      width: 52px;
-      height: 52px;
-      border: 1px solid var(--navy-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.75rem;
-      transition: var(--transition);
-    }
-
-    .pillar-card:hover .pillar-icon {
-      border-color: var(--copper);
-      background: rgba(184,115,51,0.08);
-    }
-
-    .pillar-icon svg { width: 24px; height: 24px; stroke: var(--copper); fill: none; stroke-width: 1.5; }
-
-    .pillar-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: var(--copper);
-      margin-bottom: 0.5rem;
-    }
-
-    .pillar-title { font-size: 1.25rem; margin-bottom: 1rem; color: var(--white); }
-    .pillar-desc { color: var(--grey-mid); font-size: 0.9375rem; line-height: 1.75; }
-
-    /* ============================================================
-       GLOBAL FOOTPRINT
-    ============================================================ */
-    #footprint { background: var(--navy-mid); }
-
-    .footprint-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .footprint-grid { grid-template-columns: 1fr; gap: 3rem; }
-    }
-
-    .world-map-container {
-      position: relative;
-      background: var(--navy-light);
-      border: 1px solid var(--navy-border);
-      padding: 2rem;
-      aspect-ratio: 16/9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .world-map-svg { width: 100%; opacity: 0.4; }
-
-    /* Trade corridor dots */
-    .trade-dot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: var(--copper);
-      border-radius: 50%;
-      animation: dotPulse 3s ease-in-out infinite;
-    }
-    .trade-dot::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 1px solid var(--copper);
-      opacity: 0;
-      animation: ringPulse 3s ease-in-out infinite;
-    }
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    @keyframes ringPulse {
-      0% { transform: scale(0.5); opacity: 0.8; }
-      100% { transform: scale(2.5); opacity: 0; }
-    }
-
-    .dot-1 { top: 22%; left: 48%; animation-delay: 0s; }
-    .dot-2 { top: 38%; left: 72%; animation-delay: 0.5s; }
-    .dot-3 { top: 55%; left: 55%; animation-delay: 1s; }
-    .dot-4 { top: 30%; left: 18%; animation-delay: 1.5s; }
-    .dot-5 { top: 62%; left: 28%; animation-delay: 2s; }
-    .dot-6 { top: 25%; left: 60%; animation-delay: 0.8s; }
-    .dot-7 { top: 45%; left: 82%; animation-delay: 1.3s; }
-
-    .regions-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-
-    .region-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      border: 1px solid var(--navy-border);
-      transition: var(--transition);
-    }
-    .region-item:hover { border-color: var(--copper); background: rgba(184,115,51,0.04); }
-
-    .region-flag {
-      width: 32px;
-      height: 32px;
-      background: var(--navy-border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .region-info {}
-    .region-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--white); }
-    .region-role { font-size: 0.8rem; color: var(--grey-mid); }
-
-    /* ============================================================
-       WHY PYROCOR
-    ============================================================ */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-
-    @media (max-width: 900px) {
-      .why-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .why-grid { grid-template-columns: 1fr; }
-    }
-
-    .why-card {
-      padding: 2rem;
-      border: 1px solid var(--navy-border);
-      transition: var(--transition);
-      position: relative;
-    }
-    .why-card:hover { border-color: rgba(184,115,51,0.3); }
-
-    .why-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--navy-border);
-      line-height: 1;
-      margin-bottom: 1rem;
-      transition: color var(--transition);
-    }
-    .why-card:hover .why-number { color: rgba(184,115,51,0.2); }
-
-    .why-title { font-size: 1rem; font-weight: 600; color: var(--white); font-family: 'Space Grotesk', sans-serif; margin-bottom: 0.75rem; }
-    .why-desc { color: var(--grey-mid); font-size: 0.875rem; line-height: 1.75; }
-
-    /* ============================================================
-       PRODUCTS / TRADING
-    ============================================================ */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .products-grid { grid-template-columns: 1fr; }
-    }
-
-    .product-card {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-      border: 1px solid var(--navy-border);
-    }
-
-    .product-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.6s ease;
-    }
-    .product-card:hover .product-bg { transform: scale(1.05); }
-
-    .product-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,15,30,0.97) 0%, rgba(10,15,30,0.5) 60%, rgba(10,15,30,0.2) 100%);
-    }
-
-    .product-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 2rem;
-    }
-
-    .product-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.5rem; }
-    .product-title { font-size: 1.5rem; color: var(--white); margin-bottom: 0.75rem; }
-    .product-desc { font-size: 0.875rem; color: var(--grey-light); line-height: 1.7; margin-bottom: 1.25rem; }
-
-    .product-specs {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .spec-tag {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      border: 1px solid rgba(184,115,51,0.3);
-      color: var(--copper);
-    }
-
-    /* ============================================================
-       IOR / EOR SERVICES
-    ============================================================ */
-    #ior-eor { background: var(--navy-mid); }
-
-    .services-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--navy-border);
-      margin-top: 4rem;
-    }
-
-    @media (max-width: 768px) {
-      .services-split { grid-template-columns: 1fr; }
-    }
-
-    .service-panel {
-      background: var(--navy-mid);
-      padding: 3.5rem 3rem;
-    }
-
-    .service-panel-accent {
-      background: linear-gradient(135deg, #0F1928 0%, #141e2e 100%);
-    }
-
-    .service-icon-lg {
-      width: 64px;
-      height: 64px;
-      background: rgba(184,115,51,0.08);
-      border: 1px solid rgba(184,115,51,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .service-icon-lg svg { width: 28px; height: 28px; stroke: var(--copper); fill: none; stroke-width: 1.5; }
-
-    .service-title { font-size: 1.75rem; color: var(--white); margin-bottom: 1rem; }
-    .service-desc { color: var(--grey-mid); line-height: 1.8; margin-bottom: 2rem; }
-
-    .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .service-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--grey-light);
-    }
-    .service-list li::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-right: 2px solid var(--copper);
-      border-bottom: 2px solid var(--copper);
-      transform: rotate(-45deg) translateY(4px);
-      flex-shrink: 0;
-      margin-top: 0.25rem;
-    }
-
-    /* ============================================================
-       ADVISORY SERVICES
-    ============================================================ */
-    .advisory-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-    }
-
-    .advisory-card {
-      padding: 2.25rem;
-      border: 1px solid var(--navy-border);
-      transition: var(--transition);
-    }
-    .advisory-card:hover { border-color: rgba(184,115,51,0.3); transform: translateY(-4px); }
-
-    .advisory-icon {
-      width: 44px;
-      height: 44px;
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--navy-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-    .advisory-card:hover .advisory-icon { border-color: var(--copper); }
-    .advisory-icon svg { width: 20px; height: 20px; stroke: var(--copper); fill: none; stroke-width: 1.5; }
-
-    .advisory-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--white); margin-bottom: 0.75rem; }
-    .advisory-desc { color: var(--grey-mid); font-size: 0.875rem; line-height: 1.75; }
-
-    /* ============================================================
-       TRUST BANNER / CERTIFICATIONS
-    ============================================================ */
-    .trust-banner {
-      background: linear-gradient(135deg, var(--navy-light) 0%, rgba(26,37,64,0.7) 100%);
-      border: 1px solid var(--navy-border);
-      padding: 3rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .trust-item { text-align: center; }
-    .trust-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--white);
-      display: block;
-    }
-    .trust-value em { font-style: normal; color: var(--copper); }
-    .trust-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-      margin-top: 0.25rem;
-    }
-
-    /* ============================================================
-       ABOUT
-    ============================================================ */
-    #about { background: var(--navy-mid); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    }
-
-    .mvv-stack { display: flex; flex-direction: column; gap: 2rem; }
-
-    .mvv-card {
-      padding: 2rem;
-      border-left: 2px solid var(--copper);
-      background: rgba(184,115,51,0.03);
-    }
-
-    .mvv-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.5rem; }
-    .mvv-text { color: var(--grey-light); font-size: 0.9375rem; line-height: 1.8; }
-
-    .philosophy-block { margin-top: 2rem; }
-    .philosophy-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--white);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-      border-left: 3px solid var(--copper);
-      padding-left: 1.5rem;
-    }
-
-    /* ============================================================
-       CONTACT
-    ============================================================ */
-    #contact {}
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    }
-
-    .contact-info {}
-    .contact-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .contact-item {}
-    .contact-item-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.4rem; }
-    .contact-item-value { color: var(--grey-light); font-size: 0.9375rem; }
-
-    /* Form Styles */
-    .form-group { margin-bottom: 1.25rem; }
-
-    .form-label {
-      display: block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-      margin-bottom: 0.5rem;
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      background: var(--navy-mid);
-      border: 1px solid var(--navy-border);
-      color: var(--off-white);
-      padding: 0.875rem 1rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9375rem;
-      transition: border-color var(--transition);
-      outline: none;
-      appearance: none;
-    }
-
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--copper);
-    }
-
-    .form-textarea { resize: vertical; min-height: 120px; }
-
-    .form-select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A909E' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
-    }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 3rem 2rem;
-      border: 1px solid rgba(184,115,51,0.3);
-    }
-    .form-success.show { display: block; }
-    .form-success h3 { font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; }
-    .form-success p { color: var(--grey-mid); }
-
-    /* ============================================================
-       ESG SECTION
-    ============================================================ */
-    #esg { background: var(--navy-mid); }
-
-    .esg-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 3.5rem;
-    }
-    @media (max-width: 768px) {
-      .esg-grid { grid-template-columns: 1fr; }
-    }
-
-    .esg-card {
-      padding: 2.5rem;
-      border: 1px solid var(--navy-border);
-      text-align: center;
-    }
-
-    .esg-letter {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: 700;
-      color: var(--copper);
-      opacity: 0.3;
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .esg-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; }
-    .esg-desc { color: var(--grey-mid); font-size: 0.875rem; line-height: 1.75; }
-
-    /* ============================================================
-       CTA BAND
-    ============================================================ */
-    .cta-band {
-      background: linear-gradient(135deg, #0D1529 0%, #111828 50%, #0A0F1E 100%);
-      border-top: 1px solid var(--navy-border);
-      border-bottom: 1px solid var(--navy-border);
-      padding: 6rem 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,115,51,0.06) 0%, transparent 70%);
-    }
-
-    .cta-band .container { position: relative; }
-    .cta-band h2 { max-width: 700px; margin: 0 auto 1.5rem; }
-    .cta-band p { color: var(--grey-mid); max-width: 500px; margin: 0 auto 3rem; }
-    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      background: #060A14;
-      border-top: 1px solid var(--navy-border);
-      padding: 5rem 0 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    }
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-
-    .footer-brand {}
-    .footer-tagline { color: var(--grey-mid); font-size: 0.875rem; line-height: 1.75; margin-top: 1rem; max-width: 280px; }
-
-    .footer-nav-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--copper);
-      margin-bottom: 1.25rem;
-    }
-
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-    .footer-links a {
-      color: var(--grey-mid);
-      text-decoration: none;
-      font-size: 0.875rem;
-      transition: color var(--transition);
-    }
-    .footer-links a:hover { color: var(--off-white); }
-
-    .footer-bottom {
-      padding-top: 2rem;
-      border-top: 1px solid var(--navy-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-legal { font-size: 0.8rem; color: var(--grey-mid); }
-    .footer-legal-links { display: flex; gap: 1.5rem; }
-    .footer-legal-links a { color: var(--grey-mid); text-decoration: none; font-size: 0.8rem; transition: color var(--transition); }
-    .footer-legal-links a:hover { color: var(--copper); }
-
-    /* ============================================================
-       ANIMATIONS & REVEAL
-       Only hide when JS confirmed running - prevents blank page.
-    ============================================================ */
-    .js-loaded .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .js-loaded .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ============================================================
-       PAGE SECTIONS NAV
-    ============================================================ */
-    .page-header {
-      padding: 10rem 0 5rem;
-      background: var(--navy-mid);
-      border-bottom: 1px solid var(--navy-border);
-    }
-
-    /* ============================================================
-       RESPONSIVE NAV
-    ============================================================ */
-    @media (max-width: 1024px) {
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .hamburger { display: flex; }
-    }
-
-    /* ============================================================
-       MISC UTILITIES
-    ============================================================ */
-    .mt-1 { margin-top: 0.5rem; }
-    .mt-2 { margin-top: 1rem; }
-    .mt-3 { margin-top: 1.5rem; }
-    .mt-4 { margin-top: 2rem; }
-    .mt-6 { margin-top: 3rem; }
-    .mb-2 { margin-bottom: 1rem; }
-    .mb-4 { margin-bottom: 2rem; }
-    .text-center { text-align: center; }
-    .max-w-700 { max-width: 700px; }
-    .max-w-600 { max-width: 600px; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* ============================================================
-       TRADING TABS
-    ============================================================ */
-    .trading-tabs {
-      display: flex;
-      gap: 0;
-      border: 1px solid var(--navy-border);
-      width: fit-content;
-    }
-
-    .tab-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.875rem 2rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-      background: var(--navy-mid);
-      border: none;
-      border-right: 1px solid var(--navy-border);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .tab-btn:last-child { border-right: none; }
-    .tab-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
-    .tab-btn:hover { color: var(--off-white); background: var(--navy-light); }
-    .tab-btn.active { color: var(--navy-deep); background: var(--copper); }
-    .tab-btn.active svg { stroke: var(--navy-deep); }
-
-    @media (max-width: 600px) {
-      .trading-tabs { flex-direction: column; width: 100%; }
-      .tab-btn { border-right: none; border-bottom: 1px solid var(--navy-border); }
-      .tab-btn:last-child { border-bottom: none; }
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    .tab-intro {
-      padding: 2rem 0 1rem;
-      max-width: 700px;
-    }
-
-    /* ============================================================
-       COMMODITY CARDS (Agri + Other)
-    ============================================================ */
-    .commodity-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 900px) { .commodity-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .commodity-grid { grid-template-columns: 1fr; } }
-
-    .commodity-card {
-      padding: 2.25rem;
-      border: 1px solid var(--navy-border);
-      background: var(--navy-mid);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .commodity-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--copper);
-      transform: scaleX(0);
-      transition: transform var(--transition);
-    }
-
-    .commodity-card:hover { border-color: rgba(184,115,51,0.3); transform: translateY(-3px); }
-    .commodity-card:hover::after { transform: scaleX(1); }
-
-    .commodity-icon {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .commodity-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-    }
-
-    .commodity-desc {
-      color: var(--grey-mid);
-      font-size: 0.875rem;
-      line-height: 1.75;
-    }
-
-    .certifications-row {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    .cert-badge {
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--navy-border);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--grey-mid);
-    }
-
-    /* ============================================================
-       INLINE SVG ICONS (No external dependency)
-    ============================================================ */
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pyrocor | Commodity Trading, Advisory and Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1f35;--nvm:#162b47;--gold:#c8a84b;--goldl:#d9bb68;--w:#fff;--off:#f8f7f5;--rule:#e4e1db;--text:#1a1714;--mut:#6b6560;--faint:#9b9690;--grn:#2d6a4f}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--w);color:var(--text);overflow-x:hidden}
+.page{display:none}.page.active{display:block;animation:pi .4s ease}
+@keyframes pi{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;transition:background .35s,padding .35s,box-shadow .35s}
+#nav.sol{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);padding:1rem 3rem;box-shadow:0 1px 0 var(--rule)}
+.nlb{display:flex;align-items:center;background:none;border:none;cursor:pointer;padding:0}
+.nw{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;letter-spacing:.03em;color:var(--w);transition:color .3s}
+#nav.sol .nw{color:var(--navy)}
+.nl{display:flex;align-items:center;gap:.1rem;list-style:none}
+.nl li button{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);background:none;border:none;border-bottom:2px solid transparent;padding:.5rem .75rem;cursor:pointer;transition:color .2s,border-color .2s}
+.nl li button:hover{color:var(--w)}.nl li button.act{color:var(--w);border-bottom-color:var(--gold)}
+#nav.sol .nl li button{color:var(--mut)}
+#nav.sol .nl li button:hover{color:var(--navy)}
+#nav.sol .nl li button.act{color:var(--navy);border-bottom-color:var(--gold)}
+.ncta{background:var(--gold)!important;color:var(--navy)!important;border:none!important;padding:.6rem 1.2rem!important}
+.ncta.act{border-bottom:none!important}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--w);transition:background .3s}
+#nav.sol .hbg span{background:var(--navy)}
+#mob{display:none;position:fixed;inset:0;background:var(--navy);z-index:490;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+#mob.open{display:flex}
+#mob button{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);background:none;border:none;cursor:pointer;transition:color .2s}
+#mob button:hover{color:var(--gold)}
+#mob .mcl{position:absolute;top:1.5rem;right:1.8rem;font-size:1.4rem;color:rgba(255,255,255,.4);background:none;border:none;cursor:pointer}
+.hs{position:relative;min-height:460px;overflow:hidden;display:flex;align-items:flex-end;background:linear-gradient(145deg,#091525 0%,var(--navy) 55%,#162b47 100%)}
+.hg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 75% 55%,rgba(200,168,75,.1) 0%,transparent 65%)}
+.hgr{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 70% 80% at 80% 50%,black,transparent 80%)}
+.hf{position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to top,var(--w),transparent);z-index:2}
+.hc{position:relative;z-index:3;max-width:1300px;margin:0 auto;width:100%;padding:8rem 3.5rem 5rem}
+.bdg{display:flex;align-items:center;gap:.8rem;margin-bottom:1.6rem}
+.bl{width:36px;height:1px;background:var(--gold)}.bt{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.ph1{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:400;line-height:1.1;color:var(--w);margin-bottom:1.2rem}
+.ph1 em{font-style:italic;color:rgba(255,255,255,.42)}
+.ple{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.5);max-width:560px}
+.sec{padding:7rem 3.5rem}.si{max-width:1300px;margin:0 auto}
+.ey{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
+.er{width:36px;height:1px;background:var(--gold);flex-shrink:0}
+.et{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.en{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.12em;color:var(--faint)}
+h2.sr{font-family:'Libre Baskerville',serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:400;line-height:1.15;color:var(--navy)}
+h2.sr em{font-style:italic;color:var(--mut)}
+.bp{font-size:.95rem;font-weight:300;line-height:1.85;color:var(--mut);margin-bottom:1.2rem}
+.bp strong{font-weight:500;color:var(--text)}
+.dv{width:100%;height:1px;background:var(--rule)}
+.bn{display:inline-flex;align-items:center;gap:.7rem;background:var(--navy);color:var(--w);font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border:none;padding:1rem 2rem;cursor:pointer;transition:background .2s,transform .2s}
+.bn:hover{background:var(--nvm);transform:translateY(-1px)}
+.bg{display:inline-flex;align-items:center;gap:.7rem;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border:none;padding:1rem 2rem;cursor:pointer;transition:background .2s,transform .2s}
+.bg:hover{background:var(--goldl);transform:translateY(-1px)}
+.bn svg,.bg svg{transition:transform .2s}.bn:hover svg,.bg:hover svg{transform:translateX(4px)}
+.btn-ghost{background:none;border:none;border-bottom:1px solid rgba(255,255,255,.2);font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);cursor:pointer;padding-bottom:2px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.g22{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.card{background:var(--w);padding:2.2rem 2rem;transition:background .25s}.card:hover{background:var(--off)}
+.cn{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.18em;color:var(--gold);margin-bottom:.9rem}
+.ct{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400;color:var(--navy);margin-bottom:.6rem;line-height:1.3}
+.cb{font-size:.82rem;font-weight:300;line-height:1.75;color:var(--mut)}
+.svc{background:var(--w);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.svc:hover::before{transform:scaleX(1)}.svc:hover{background:var(--navy)}
+.svc:hover .sn,.svc:hover .sb{color:rgba(255,255,255,.45)}.svc:hover .st{color:var(--w)}
+.sn{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.16em;color:var(--gold);margin-bottom:1.5rem;transition:color .3s}
+.st{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:400;color:var(--navy);margin-bottom:.9rem;line-height:1.3;transition:color .3s}
+.sb{font-size:.82rem;font-weight:300;line-height:1.75;color:var(--mut);transition:color .3s}
+.dc{background:var(--w);border-top:3px solid var(--gold);padding:3rem 2.5rem;transition:background .3s,transform .3s;cursor:pointer}
+.dc:hover{background:var(--off);transform:translateY(-3px)}
+.dlbl{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.dtitle{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:400;color:var(--navy);margin-bottom:1rem;line-height:1.2}
+.dbody{font-size:.88rem;font-weight:300;line-height:1.75;color:var(--mut);margin-bottom:1.5rem}
+.dlink{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--gold);padding-bottom:2px}
+.stat{background:var(--w);padding:2.5rem 2rem;transition:background .25s}.stat:hover{background:var(--off)}
+.stn{font-family:'Libre Baskerville',serif;font-size:2.8rem;font-weight:400;color:var(--navy);line-height:1;margin-bottom:.4rem}
+.stn sup{font-size:1.4rem;color:var(--gold)}
+.stl{font-size:.82rem;font-weight:300;color:var(--mut);line-height:1.55}
+.pr{display:grid;grid-template-columns:48px 1fr;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid var(--rule)}
+.pr:first-child{border-top:1px solid var(--rule)}
+.pn{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.15em;color:var(--gold);padding-top:.2rem}
+.pt{font-family:'Libre Baskerville',serif;font-size:.98rem;font-weight:400;color:var(--navy);margin-bottom:.4rem}
+.pb{font-size:.83rem;font-weight:300;line-height:1.7;color:var(--mut)}
+.drk{background:var(--navy);padding:5rem 3.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.14);padding:.5rem 1rem;transition:all .2s;cursor:default}
+.tag:hover{color:var(--navy);background:var(--gold);border-color:var(--gold)}
+.ec{padding:2.8rem 2.5rem;background:var(--w);border-left:3px solid transparent;transition:background .3s}
+.ec:hover{background:var(--off)}.ece{border-left-color:var(--grn)}.ecs{border-left-color:#1d6fa4}.ecg{border-left-color:var(--gold)}
+.et2{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:400;color:var(--navy);margin-bottom:.8rem;margin-top:1.2rem}
+.eb{font-size:.85rem;font-weight:300;line-height:1.75;color:var(--mut)}
+.com{display:grid;grid-template-columns:28px 1fr;gap:1rem;align-items:start;padding:1.8rem 0;border-bottom:1px solid var(--rule)}
+.com:first-child{border-top:1px solid var(--rule)}
+.comt{font-size:.9rem;font-weight:500;color:var(--navy);margin-bottom:.3rem}
+.comb{font-size:.82rem;font-weight:300;line-height:1.65;color:var(--mut)}
+.fg{margin-bottom:1.2rem}
+.fl{display:block;font-family:'Barlow Condensed',sans-serif;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:.5rem}
+.fi,.fta,.fsl{width:100%;background:var(--off);border:1px solid var(--rule);padding:.85rem 1rem;font-family:'Barlow',sans-serif;font-size:.88rem;font-weight:300;color:var(--text);outline:none;transition:border-color .2s,background .2s;resize:none;appearance:none}
+.fi:focus,.fta:focus,.fsl:focus{border-color:var(--gold);background:var(--w)}.fta{height:120px}
+.cr{display:flex;justify-content:space-between;align-items:flex-start;padding:1.4rem 0;border-bottom:1px solid var(--rule);gap:2rem}
+.cr:first-child{border-top:1px solid var(--rule)}
+.cl{font-family:'Barlow Condensed',sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);flex-shrink:0}
+.cv{font-size:.88rem;font-weight:300;color:var(--text);text-align:right;line-height:1.6}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+footer{background:var(--navy);padding:2.8rem 3.5rem}
+.ft{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.flk{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap}
+.flk button{font-family:'Barlow Condensed',sans-serif;font-size:.64rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);background:none;border:none;cursor:pointer;transition:color .2s}
+.flk button:hover{color:rgba(255,255,255,.65)}
+.fcp{font-size:.7rem;font-weight:300;color:rgba(255,255,255,.2)}
+@media(max-width:1100px){#nav,#nav.sol{padding:1.2rem 1.8rem}.sec,.drk{padding:5rem 1.8rem}.hc{padding:7rem 1.8rem 4rem}.g2,.g3{grid-template-columns:1fr}.g22{grid-template-columns:1fr 1fr}.hbg{display:flex}.nl{display:none}footer{padding:2.5rem 1.8rem}.ft{flex-direction:column;align-items:flex-start}#hstats{display:none!important}}
+@media(max-width:600px){.g22{grid-template-columns:1fr}.ph1{font-size:2rem}}
+</style>
 </head>
-
 <body>
-
-<!-- ============================================================
-     NAVIGATION
-============================================================ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Pyrocor Home">
-        <div class="logo-mark">
-          <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <polygon points="19,2 36,34 2,34" stroke="#B87333" stroke-width="2" fill="none"/>
-            <polygon points="19,10 30,30 8,30" fill="#B87333" opacity="0.25"/>
-            <line x1="19" y1="2" x2="19" y2="34" stroke="#B87333" stroke-width="1" opacity="0.4"/>
-          </svg>
-        </div>
-        <span class="logo-text">PYRO<span>COR</span></span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#trading">Trading</a></li>
-        <li><a href="#ior-eor">IOR / EOR</a></li>
-        <li><a href="#advisory">Advisory</a></li>
-        <li><a href="#operations">Operations</a></li>
-        <li><a href="#contact" class="btn btn-primary nav-cta">Trade Enquiry</a></li>
-      </ul>
-
-      <button class="hamburger" id="menuBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
+<div id="mob">
+  <button class="mcl" id="mcl">&#x2715;</button>
+  <button data-pg="home">Home</button><button data-pg="about">About</button>
+  <button data-pg="trading">Trading</button><button data-pg="advisory">Advisory</button>
+  <button data-pg="capital">Capital</button><button data-pg="markets">Markets</button>
+  <button data-pg="esg">ESG</button><button data-pg="contact">Contact</button>
+</div>
+<nav id="nav">
+  <button class="nlb" data-pg="home"><span class="nw">Pyrocor</span></button>
+  <ul class="nl">
+    <li><button data-pg="home">Home</button></li>
+    <li><button data-pg="about">About</button></li>
+    <li><button data-pg="trading">Trading</button></li>
+    <li><button data-pg="advisory">Advisory</button></li>
+    <li><button data-pg="capital">Capital</button></li>
+    <li><button data-pg="markets">Markets</button></li>
+    <li><button data-pg="esg">ESG</button></li>
+    <li><button data-pg="contact" class="ncta">Contact</button></li>
+  </ul>
+  <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <button class="mobile-close" id="menuClose" aria-label="Close menu">✕</button>
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#trading" class="mobile-link">Trading</a>
-  <a href="#ior-eor" class="mobile-link">IOR / EOR</a>
-  <a href="#advisory" class="mobile-link">Advisory</a>
-  <a href="#operations" class="mobile-link">Operations</a>
-  <a href="#contact" class="mobile-link">Contact</a>
+<!-- HOME -->
+<div class="page" id="page-home">
+  <section style="position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:center;background:linear-gradient(145deg,#091525 0%,#0d1f35 55%,#162b47 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 75% 55%,rgba(200,168,75,.11) 0%,transparent 65%)"></div>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 70% 80% at 80% 50%,black,transparent 80%)"></div>
+    <div style="position:absolute;inset:0;overflow:hidden"><svg style="position:absolute;bottom:0;right:0;width:60%;height:100%;opacity:.12" viewBox="0 0 900 700" fill="none"><rect x="420" y="100" width="14" height="600" fill="white"/><rect x="415" y="96" width="24" height="12" fill="white" opacity=".7"/><rect x="405" y="300" width="44" height="6" fill="white" opacity=".5"/><rect x="405" y="450" width="44" height="6" fill="white" opacity=".5"/><circle cx="427" cy="98" r="5" stroke="white" stroke-width="1.2"/><rect x="500" y="180" width="10" height="520" fill="white" opacity=".8"/><rect x="360" y="240" width="20" height="460" fill="white" opacity=".9"/><rect x="355" y="236" width="30" height="12" fill="white" opacity=".5"/><line x1="380" y1="400" x2="420" y2="400" stroke="white" stroke-width="6" opacity=".5"/><circle cx="320" cy="520" r="55" stroke="white" stroke-width="1.5" fill="none" opacity=".5"/><rect x="280" y="588" width="270" height="35" fill="white" opacity=".5"/><rect x="570" y="300" width="9" height="400" fill="white" opacity=".6"/><rect x="590" y="350" width="8" height="350" fill="white" opacity=".5"/><line x1="570" y1="450" x2="622" y2="490" stroke="white" stroke-width="2.5" opacity=".4"/></svg></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,#fff,transparent);z-index:2"></div>
+    <div style="position:relative;z-index:3;max-width:1300px;margin:0 auto;width:100%;padding:0 3.5rem">
+      <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;animation:pi .8s ease .1s both"><div style="width:36px;height:1px;background:var(--gold)"></div><span style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">Johannesburg &middot; Southern Africa</span></div>
+      <h1 style="font-family:'Libre Baskerville',serif;font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:400;line-height:1.05;color:#fff;margin-bottom:1.5rem;animation:pi .9s ease .25s both;max-width:800px">Trading. Advisory.<br><em style="font-style:italic;color:rgba(255,255,255,.45)">Capital.</em></h1>
+      <p style="font-size:1.05rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.52);max-width:520px;margin-bottom:2.8rem;animation:pi .9s ease .4s both">Pyrocor is a specialist commodity business operating across three integrated divisions. We trade physical commodities, advise on market strategy and invest in commodity-linked opportunities.</p>
+      <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;animation:pi .9s ease .55s both">
+        <button class="bg" id="scrollDivisions">Our Divisions <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="btn-ghost" data-pg="contact">Get in touch</button>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="divisions-section" style="background:var(--off)">
+    <div class="si">
+      <div class="ey rv"><div class="er"></div><span class="et">Our Divisions</span></div>
+      <div class="g3 rv">
+        <div class="dc" data-pg="trading"><div class="dlbl">Pyrocor Trading</div><div class="dtitle">Physical commodity trading across five sectors.</div><div class="dbody">We trade industrial chemicals, minerals, proteins, power and energy and base metals. As principal traders we take positions, structure deals and move physical product across Southern Africa and international markets.</div><span class="dlink">View Trading</span></div>
+        <div class="dc" data-pg="advisory"><div class="dlbl">Pyrocor Advisory</div><div class="dtitle">Strategy, intelligence and market access.</div><div class="dbody">We advise commodity businesses, industrial producers and project developers on market entry, trade structuring, counterparty identification and commercial strategy. All engagements are led directly by the principal.</div><span class="dlink">View Advisory</span></div>
+        <div class="dc" data-pg="capital"><div class="dlbl">Pyrocor Capital</div><div class="dtitle">Investing in the industries that shape what comes next.</div><div class="dbody">Pyrocor Capital deploys capital into forward-thinking industries and real-world opportunities. We back businesses with genuine commercial substance where our knowledge, networks and operating experience create a real edge.</div><span class="dlink">View Capital</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--w);padding-top:0">
+    <div class="si">
+      <div class="ey rv"><div class="er"></div><span class="et">Who We Are</span></div>
+      <div class="g2">
+        <div class="rv">
+          <h2 class="sr" style="margin-bottom:2rem">Principal-led.<br><em>Commercially sharp.</em><br>Built on integrity.</h2>
+          <p class="bp">Pyrocor is led by a commodity market executive with over two decades of hands-on experience across Southern Africa and global markets. Every division benefits from direct principal involvement.</p>
+          <p class="bp">We are not a large institution. We are a specialist business where experience, relationships and accountability are concentrated in one place.</p>
+          <button class="bn" data-pg="about" style="margin-top:1.5rem">About Pyrocor <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div id="hstats" class="g22 rv d2">
+          <div class="stat"><div class="stn">20<sup>+</sup></div><div class="stl">Years of hands-on commodity trading experience</div></div>
+          <div class="stat"><div class="stn">20<sup>+</sup></div><div class="stl">Countries traded into across a 20+ year career</div></div>
+          <div class="stat"><div class="stn">3</div><div class="stl">Integrated business divisions</div></div>
+          <div class="stat"><div class="stn">5</div><div class="stl">Core commodity sectors</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="drk"><div style="max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem"><div><h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;color:#fff;margin-bottom:.5rem">Ready to explore an opportunity?</h2><p style="font-size:.9rem;font-weight:300;color:rgba(255,255,255,.45)">Every good deal starts with a conversation.</p></div><button class="bg" data-pg="contact">Get in touch</button></div></div>
 </div>
-
-<!-- ============================================================
-     HERO
-============================================================ -->
-<section id="hero" aria-label="Hero section">
-  <div class="hero-bg" role="img" aria-label="Global shipping and trade imagery"></div>
-  <div class="hero-grid" aria-hidden="true"></div>
-
-  <div class="container hero-content">
-    <div class="hero-badge reveal">
-      <span class="badge-dot" aria-hidden="true"></span>
-      <span class="overline">Global Commodity Trading House</span>
-    </div>
-
-    <h1 class="display-xl hero-headline reveal reveal-delay-1">
-      The World Trades.<br/>
-      <em>We Make It Move.</em>
-    </h1>
-
-    <p class="hero-sub reveal reveal-delay-2">
-      Pyrocor operates at the forefront of global protein trade — connecting sovereign buyers, institutional importers, and multinational food groups to regulated, verifiable supply chains across six continents.
-    </p>
-
-    <div class="hero-actions reveal reveal-delay-3">
-      <a href="#contact" class="btn btn-primary">
-        Initiate Trade Enquiry
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </a>
-      <a href="#about" class="btn btn-outline">Discover Pyrocor</a>
-    </div>
-
-    <div class="hero-stats reveal reveal-delay-4">
-      <div class="stat-item">
-        <span class="stat-number">40<span>+</span></span>
-        <span class="stat-label">Trade Markets</span>
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="hs"><div class="hg"></div><div class="hgr"></div><div class="hf"></div>
+    <div class="hc"><div class="bdg"><div class="bl"></div><span class="bt">About Pyrocor</span></div><h1 class="ph1">Two decades of<br><em>real market experience.</em></h1><p class="ple">Pyrocor is a specialist commodity business headquartered in Johannesburg, operating across trading, advisory and capital investment.</p></div>
+  </div>
+  <section class="sec"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">Our Story</span><span class="en">01</span></div>
+    <div class="g2">
+      <div class="rv">
+        <h2 class="sr" style="margin-bottom:2rem">The firm behind<br><em>the expertise.</em></h2>
+        <p class="bp">Pyrocor is a specialist commodity business led by a principal with over two decades of hands-on trading experience across Southern Africa and global commodity markets.</p>
+        <p class="bp">The business was established to bring principal-level expertise directly to bear across three activities: physical commodity trading, strategic advisory and investment. Each division operates with the same values and the same direct, accountable approach.</p>
+        <p class="bp">We work with commodity trading businesses, industrial producers, consumers and project developers that need a knowledgeable, well-connected partner operating with full accountability.</p>
+        <p class="bp">Pyrocor's counterparty network spans more than 20 countries. Our commodity track record covers five sectors: industrial chemicals, minerals, proteins, power and energy and base metals.</p>
       </div>
-      <div class="stat-item">
-        <span class="stat-number">6</span>
-        <span class="stat-label">Continents Active</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">3</span>
-        <span class="stat-label">Protein Categories</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">100<span>%</span></span>
-        <span class="stat-label">Compliance Driven</span>
+      <div class="rv d2">
+        <div style="background:var(--off);padding:2.5rem;margin-bottom:1.5rem">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">Director</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--navy);margin-bottom:.5rem">Commodity, Trade &amp; Operations Executive</div>
+          <div style="font-size:.82rem;font-weight:300;color:var(--mut);margin-bottom:1.5rem;line-height:1.65">BCom (University of the Witwatersrand)<br>CIMA CGMA<br>20+ years in commodity trading</div>
+          <div class="dv" style="margin-bottom:1.5rem"></div>
+          <div style="font-size:.82rem;font-weight:300;color:var(--mut);line-height:1.7;font-style:italic">"Commodity trading is built on relationships, knowledge and the willingness to stand behind your word. That is what Pyrocor is."</div>
+        </div>
+        <div class="g22"><div class="stat"><div class="stn">20<sup>+</sup></div><div class="stl">Years in commodity markets</div></div><div class="stat"><div class="stn">20<sup>+</sup></div><div class="stl">Countries traded into</div></div><div class="stat"><div class="stn">3</div><div class="stl">Integrated divisions</div></div><div class="stat"><div class="stn">5</div><div class="stl">Core commodity sectors</div></div></div>
       </div>
     </div>
-  </div>
-
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- ============================================================
-     TICKER
-============================================================ -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-inner">
-    <div class="ticker-item"><strong>Protein</strong> — Poultry · Beef · Mutton</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Agri</strong> — Grains · Oilseeds · Edible Oils · Sugar · Dairy</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Commodities</strong> — Metals · Chemicals · Timber · Energy</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>IOR / EOR</strong> — Any commodity · 80+ jurisdictions</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Cold Chain</strong> — Port-to-plate logistics</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Advisory</strong> — Government & Institutional</div>
-    <div class="ticker-dot"></div>
-    <!-- Duplicate for seamless loop -->
-    <div class="ticker-item"><strong>Protein</strong> — Poultry · Beef · Mutton</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Agri</strong> — Grains · Oilseeds · Edible Oils · Sugar · Dairy</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Commodities</strong> — Metals · Chemicals · Timber · Energy</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>IOR / EOR</strong> — Any commodity · 80+ jurisdictions</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Cold Chain</strong> — Port-to-plate logistics</div>
-    <div class="ticker-dot"></div>
-    <div class="ticker-item"><strong>Advisory</strong> — Government & Institutional</div>
-    <div class="ticker-dot"></div>
-  </div>
+  </div></section>
+  <section class="sec" style="background:var(--off);padding-top:0"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">Our Values</span><span class="en">02</span></div>
+    <div class="g2" style="align-items:start">
+      <h2 class="sr rv">How we work<br><em>and why it matters.</em></h2>
+      <div class="rv d2">
+        <div class="pr"><div class="pn">01</div><div><div class="pt">Principal-Led Delivery</div><div class="pb">Every engagement across every division is led by the principal. You deal directly with the person who has the knowledge, the relationships and the accountability.</div></div></div>
+        <div class="pr"><div class="pn">02</div><div><div class="pt">Integrity as Standard</div><div class="pb">Commercial success and ethical conduct are not in tension. We hold ourselves to the same standards we expect from counterparties: honest dealing, transparent communication and fair outcomes.</div></div></div>
+        <div class="pr"><div class="pn">03</div><div><div class="pt">Networks That Open Doors</div><div class="pb">Two decades of relationships across buyers, sellers, logistics providers and regulators. These networks translate directly into value for our clients and counterparties.</div></div></div>
+        <div class="pr"><div class="pn">04</div><div><div class="pt">Earned Market Knowledge</div><div class="pb">The intelligence we bring is earned through real trading activity at scale. We have operated in these markets and that experience cannot be replicated.</div></div></div>
+      </div>
+    </div>
+  </div></section>
+  <div class="drk"><div style="max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem"><div><h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;color:#fff;margin-bottom:.4rem">Explore our three divisions.</h2><p style="font-size:.88rem;font-weight:300;color:rgba(255,255,255,.42)">Trading, Advisory and Capital.</p></div><div style="display:flex;gap:1rem;flex-wrap:wrap"><button class="bg" data-pg="trading">Trading</button><button class="bn" style="background:rgba(255,255,255,.1);color:#fff" data-pg="advisory">Advisory</button><button class="bn" style="background:rgba(255,255,255,.1);color:#fff" data-pg="capital">Capital</button></div></div></div>
 </div>
-
-<!-- ============================================================
-     WHAT WE DO
-============================================================ -->
-<section class="section" id="what-we-do" aria-labelledby="what-we-do-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">What We Do</span>
-      <div class="copper-line mt-2"></div>
-      <h2 class="display-lg max-w-700 mb-4" id="what-we-do-heading">Four Disciplines. One Integrated Capability.</h2>
-      <p class="body-lg max-w-600 text-light">Pyrocor operates across the full spectrum of global commodity trade — from origin procurement to in-country delivery, from regulatory execution to strategic market design.</p>
-    </div>
-
-    <div class="pillars-grid" role="list">
-
-      <article class="pillar-card reveal reveal-delay-1" role="listitem">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
-        </div>
-        <div class="pillar-num">01</div>
-        <h3 class="pillar-title">Global Commodity Trading</h3>
-        <p class="pillar-desc">We trade across three verticals — Protein (poultry, beef, mutton), Agricultural Commodities (grains, oilseeds, edible oils, sugar, dairy), and Other Commodities (metals, chemicals, timber, energy) — at institutional scale, across regulated global corridors.</p>
-      </article>
-
-      <article class="pillar-card reveal reveal-delay-2" role="listitem">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h6M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/></svg>
-        </div>
-        <div class="pillar-num">02</div>
-        <h3 class="pillar-title">Importer & Exporter of Record</h3>
-        <p class="pillar-desc">We act as the legal entity of record for cross-border trade across any commodity class — food, agri, chemicals, metals, machinery, and more. Where licensing, compliance infrastructure, or regulatory standing is required, we absorb the risk and deliver the certainty.</p>
-      </article>
-
-      <article class="pillar-card reveal reveal-delay-3" role="listitem">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-        </div>
-        <div class="pillar-num">03</div>
-        <h3 class="pillar-title">Cold Chain & Trade Logistics</h3>
-        <p class="pillar-desc">Our logistics architecture spans refrigerated container networks, port-side cold storage, and real-time shipment monitoring — ensuring product integrity from origin facility to final delivery point.</p>
-      </article>
-
-      <article class="pillar-card reveal reveal-delay-4" role="listitem">
-        <div class="pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10M10 20V4M14 20V14M18 20V8"/></svg>
-        </div>
-        <div class="pillar-num">04</div>
-        <h3 class="pillar-title">Strategic Advisory</h3>
-        <p class="pillar-desc">We advise governments, sovereign procurement bodies, and institutional food buyers on trade corridor design, supply chain risk, market intelligence, and cross-border execution strategy.</p>
-      </article>
-
-    </div>
+<!-- TRADING -->
+<div class="page" id="page-trading">
+  <div class="hs"><div class="hg"></div><div class="hgr"></div><div class="hf"></div>
+    <div class="hc"><div class="bdg"><div class="bl"></div><span class="bt">Pyrocor Trading</span></div><h1 class="ph1">Physical commodity trading<br>across <em>five sectors.</em></h1><p class="ple">Pyrocor Trading is the principal trading arm of the business. We buy and sell physical commodities across Southern Africa and international markets, taking positions and structuring deals as principal.</p></div>
   </div>
-</section>
-
-<!-- ============================================================
-     TRUST METRICS
-============================================================ -->
-<div class="container">
-  <div class="trust-banner reveal">
-    <div class="trust-item">
-      <span class="trust-value">40<em>+</em></span>
-      <div class="trust-label">Active Trade Markets</div>
+  <section class="sec"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">What We Trade</span><span class="en">01</span></div>
+    <div class="g22 rv" style="margin-bottom:4rem">
+      <div class="svc" style="padding:3rem 2.5rem"><div class="sn">01</div><div class="st" style="font-size:1.2rem">Industrial Chemicals</div><div class="sb">Physical trading across industrial chemical commodities including feedstocks, process chemicals and specialty chemical products. We work with producers, distributors and industrial consumers to structure efficient supply and offtake arrangements.</div></div>
+      <div class="svc" style="padding:3rem 2.5rem"><div class="sn">02</div><div class="st" style="font-size:1.2rem">Minerals</div><div class="sb">Market access, offtake structuring and trade facilitation for industrial minerals. Active in silica, quartz and critical mineral commodities essential to industrial production and the energy transition.</div></div>
+      <div class="svc" style="padding:3rem 2.5rem"><div class="sn">03</div><div class="st" style="font-size:1.2rem">Proteins</div><div class="sb">Physical trading of protein commodities including animal feed ingredients, oilseed meal, fishmeal and agricultural protein products. We connect producers and consumers across Southern Africa and export markets.</div></div>
+      <div class="svc" style="padding:3rem 2.5rem"><div class="sn">04</div><div class="st" style="font-size:1.2rem">Power &amp; Energy</div><div class="sb">Trading across power and energy commodity markets including liquid fuels, natural gas and renewable energy commodities. Southern Africa's evolving energy landscape is creating significant new opportunity.</div></div>
+      <div class="svc" style="padding:3rem 2.5rem"><div class="sn">05</div><div class="st" style="font-size:1.2rem">Metals</div><div class="sb">Physical trading in copper, aluminium, zinc, lead, nickel and tin. We work with producers, smelters and industrial consumers across Southern Africa and internationally to structure efficient, well-priced supply arrangements.</div></div>
+      <div class="svc" style="padding:3rem 2.5rem;opacity:0;pointer-events:none"></div>
     </div>
-    <div class="trust-item">
-      <span class="trust-value">80<em>+</em></span>
-      <div class="trust-label">IOR/EOR Jurisdictions</div>
+    <div class="ey rv"><div class="er"></div><span class="et">How We Trade</span><span class="en">02</span></div>
+    <div class="g2">
+      <div class="rv">
+        <h2 class="sr" style="margin-bottom:2rem">Principal trading.<br><em>Not brokerage.</em></h2>
+        <p class="bp">Pyrocor Trading operates as a principal. We take positions, commit capital and stand behind our trades. This is not an intermediary or agency model.</p>
+        <p class="bp">We source supply, identify buyers, structure the commercial and logistics terms and execute. Our counterparty relationships span producers, smelters, processors, industrial consumers and other trading houses across Southern Africa, Europe, Asia and the Americas.</p>
+        <p class="bp">Engagements range from single-transaction spot trades through to structured term supply arrangements, depending on the commodity and counterparty requirements.</p>
+        <button class="bg" data-pg="contact" style="margin-top:1.5rem">Discuss a trading opportunity</button>
+      </div>
+      <div class="rv d2">
+        <div class="pr"><div class="pn">01</div><div><div class="pt">Principal Positions</div><div class="pb">We commit as principal and stand behind our trades. No agency, no brokerage — direct accountability on every deal.</div></div></div>
+        <div class="pr"><div class="pn">02</div><div><div class="pt">Physical Commodity Focus</div><div class="pb">We trade physical product. Our expertise is in the procurement, logistics and sale of real commodity volumes across real markets.</div></div></div>
+        <div class="pr"><div class="pn">03</div><div><div class="pt">Southern Africa and Global</div><div class="pb">Primary market is Southern Africa. Our counterparty network reaches across 20+ countries internationally.</div></div></div>
+        <div class="pr"><div class="pn">04</div><div><div class="pt">Flexible Deal Structures</div><div class="pb">Spot trades, term supply or structured offtake. We adapt the commercial structure to suit the opportunity.</div></div></div>
+      </div>
     </div>
-    <div class="trust-item">
-      <span class="trust-value">100<em>%</em></span>
-      <div class="trust-label">Compliance Verification</div>
-    </div>
-    <div class="trust-item">
-      <span class="trust-value">6</span>
-      <div class="trust-label">Continent Coverage</div>
-    </div>
-    <div class="trust-item">
-      <span class="trust-value">24<em>/7</em></span>
-      <div class="trust-label">Trade Operations</div>
-    </div>
-  </div>
+  </div></section>
 </div>
-
-<!-- ============================================================
-     GLOBAL FOOTPRINT
-============================================================ -->
-<section class="section" id="footprint" aria-labelledby="footprint-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">Global Operations</span>
-      <div class="copper-line mt-2"></div>
-    </div>
-    <div class="footprint-grid">
-      <div>
-        <h2 class="display-lg reveal" id="footprint-heading">Trade Corridors Across Six Continents</h2>
-        <p class="body-lg text-light mt-3 reveal">Pyrocor's trade network spans primary production regions in the Americas, Oceania, and Europe, connecting to high-volume import markets across the Middle East, Africa, Southeast Asia, and the Gulf Cooperation Council.</p>
-
-        <div class="regions-list reveal mt-4" role="list">
-          <div class="region-item" role="listitem">
-            <div class="region-flag" aria-hidden="true">🌎</div>
-            <div class="region-info">
-              <div class="region-name">Americas (Source)</div>
-              <div class="region-role">Brazil, USA, Argentina, Uruguay — Primary protein production</div>
-            </div>
-          </div>
-          <div class="region-item" role="listitem">
-            <div class="region-flag" aria-hidden="true">🌏</div>
-            <div class="region-info">
-              <div class="region-name">Oceania (Source)</div>
-              <div class="region-role">Australia, New Zealand — Premium beef and lamb</div>
-            </div>
-          </div>
-          <div class="region-item" role="listitem">
-            <div class="region-flag" aria-hidden="true">🌍</div>
-            <div class="region-info">
-              <div class="region-name">Middle East & Africa (Demand)</div>
-              <div class="region-role">GCC, Sub-Saharan Africa — High-volume institutional buyers</div>
-            </div>
-          </div>
-          <div class="region-item" role="listitem">
-            <div class="region-flag" aria-hidden="true">🌐</div>
-            <div class="region-info">
-              <div class="region-name">Southeast Asia (Demand + Transit)</div>
-              <div class="region-role">Philippines, Vietnam, Indonesia — Distribution hubs</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="world-map-container" role="img" aria-label="World map showing Pyrocor trade corridors">
-          <!-- Simplified SVG World Map -->
-          <svg class="world-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Simplified continent shapes -->
-            <!-- North America -->
-            <path d="M80,80 L200,70 L240,100 L260,140 L220,180 L180,200 L140,220 L100,200 L60,160 L50,120 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- South America -->
-            <path d="M160,240 L220,230 L240,260 L250,310 L230,360 L190,380 L160,360 L140,310 L150,270 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Europe -->
-            <path d="M420,60 L480,55 L510,75 L500,100 L470,115 L430,110 L410,90 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Africa -->
-            <path d="M430,140 L490,130 L520,160 L530,220 L510,280 L480,310 L450,290 L420,250 L410,190 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Middle East -->
-            <path d="M510,130 L570,120 L590,150 L570,180 L530,185 L510,160 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Asia -->
-            <path d="M580,60 L700,50 L760,80 L780,120 L750,160 L700,170 L640,150 L590,120 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Southeast Asia -->
-            <path d="M700,180 L760,170 L790,200 L770,230 L720,220 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Australia -->
-            <path d="M720,280 L820,265 L860,290 L850,340 L790,360 L730,340 L705,310 Z" fill="none" stroke="#243050" stroke-width="2"/>
-            <!-- Grid lines -->
-            <line x1="0" y1="250" x2="1000" y2="250" stroke="#1A2540" stroke-width="0.5" stroke-dasharray="4,8"/>
-            <line x1="500" y1="0" x2="500" y2="500" stroke="#1A2540" stroke-width="0.5" stroke-dasharray="4,8"/>
-            <!-- Trade corridor lines -->
-            <line x1="200" y1="160" x2="510" y2="150" stroke="#B87333" stroke-width="1" stroke-dasharray="4,6" opacity="0.5"/>
-            <line x1="200" y1="160" x2="700" y2="200" stroke="#B87333" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-            <line x1="790" y1="320" x2="570" y2="155" stroke="#B87333" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-            <line x1="200" y1="290" x2="460" y2="200" stroke="#B87333" stroke-width="1" stroke-dasharray="4,6" opacity="0.35"/>
-          </svg>
-
-          <!-- Trade dots overlay -->
-          <div class="trade-dot dot-1" aria-hidden="true" title="Europe"></div>
-          <div class="trade-dot dot-2" aria-hidden="true" title="Asia"></div>
-          <div class="trade-dot dot-3" aria-hidden="true" title="Middle East"></div>
-          <div class="trade-dot dot-4" aria-hidden="true" title="Americas"></div>
-          <div class="trade-dot dot-5" aria-hidden="true" title="South America"></div>
-          <div class="trade-dot dot-6" aria-hidden="true" title="GCC"></div>
-          <div class="trade-dot dot-7" aria-hidden="true" title="Southeast Asia"></div>
-        </div>
-
-        <div class="certifications-row" aria-label="Certifications">
-          <div class="cert-badge">HACCP</div>
-          <div class="cert-badge">Halal Certified</div>
-          <div class="cert-badge">ISO 22000</div>
-          <div class="cert-badge">FSSC 22000</div>
-          <div class="cert-badge">CITES Compliant</div>
-        </div>
-      </div>
-    </div>
+<!-- ADVISORY -->
+<div class="page" id="page-advisory">
+  <div class="hs"><div class="hg"></div><div class="hgr"></div><div class="hf"></div>
+    <div class="hc"><div class="bdg"><div class="bl"></div><span class="bt">Pyrocor Advisory</span></div><h1 class="ph1">Commodity strategy<br>and <em>market intelligence.</em></h1><p class="ple">Pyrocor Advisory provides strategic guidance to businesses operating in or entering commodity markets. All engagements are led directly by the principal.</p></div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ============================================================
-     TRADING DIVISION
-============================================================ -->
-<section class="section" id="trading" aria-labelledby="trading-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">Trading Division</span>
-      <div class="copper-line mt-2"></div>
-      <h2 class="display-lg max-w-700 mb-2" id="trading-heading">Global Commodities. One Trading House.</h2>
-      <p class="body-lg max-w-600 text-light">Pyrocor trades across three core commodity verticals — Protein, Agricultural Products, and Industrial & Bulk Commodities — sourcing from verified origin facilities and delivering into institutional, government, and commercial markets worldwide.</p>
+  <section class="sec"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">What We Do</span><span class="en">01</span></div>
+    <div class="g3 rv" style="margin-bottom:4rem">
+      <div class="svc"><div class="sn">01</div><div class="st">Trade Structuring &amp; Optimisation</div><div class="sb">We analyse existing trade flows and commercial arrangements to identify where value is being left on the table. We restructure deals to improve margins, reduce risk and improve logistics efficiency.</div></div>
+      <div class="svc"><div class="sn">02</div><div class="st">Market Entry &amp; Access</div><div class="sb">For businesses looking to enter a new commodity market or geography, we provide market intelligence, counterparty identification and practical guidance on building a credible market presence.</div></div>
+      <div class="svc"><div class="sn">03</div><div class="st">Counterparty Identification</div><div class="sb">We leverage our network to identify and qualify buyers, sellers, processors and logistics partners that match a client's commodity, volume and commercial requirements.</div></div>
+      <div class="svc"><div class="sn">04</div><div class="st">Commercial Negotiation Support</div><div class="sb">We support clients through commercial negotiations on pricing, contract terms, quality specifications and logistics — drawing on direct trading experience to strengthen their position.</div></div>
+      <div class="svc"><div class="sn">05</div><div class="st">Commodity Strategy</div><div class="sb">Longer-term strategic advisory on commodity positioning, portfolio development, market risk and supply chain resilience for industrial businesses and commodity-exposed organisations.</div></div>
+      <div class="svc"><div class="sn">06</div><div class="st">Embedded Advisory Partnerships</div><div class="sb">For clients who want sustained access to principal-level expertise, we offer structured retainer arrangements providing ongoing intelligence, deal support and strategic input.</div></div>
     </div>
-
-    <!-- CATEGORY TABS -->
-    <div class="trading-tabs reveal mt-4" role="tablist" aria-label="Trading categories">
-      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-protein" id="btn-protein" data-tab="protein">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.5"/></svg>
-        Protein
-      </button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-agri" id="btn-agri" data-tab="agri">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-        Agri Commodities
-      </button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-other" id="btn-other" data-tab="other">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5"/></svg>
-        Other Commodities
-      </button>
-    </div>
-
-    <!-- PROTEIN TAB -->
-    <div class="tab-panel active" id="tab-protein" role="tabpanel" aria-labelledby="btn-protein">
-      <div class="tab-intro reveal">
-        <p class="body-md text-light">Our protein trading division manages end-to-end supply chains for poultry, beef, and mutton — from origin facility to final delivery, cold-chain verified at every point.</p>
+    <div class="ey rv"><div class="er"></div><span class="et">How We Work</span><span class="en">02</span></div>
+    <div class="g2">
+      <div class="rv">
+        <h2 class="sr" style="margin-bottom:2rem">Engagements built<br>around <em>your situation.</em></h2>
+        <p class="bp">No two commodity challenges are the same. Pyrocor Advisory engagements are scoped around your specific situation — whether that is a single transaction you need support on or a sustained strategic advisory relationship.</p>
+        <p class="bp">All work is led directly by the principal. You will not be handed to a junior team. The experience and relationships you are engaging are present in every interaction.</p>
+        <p class="bp">We work under formal agreements where appropriate and maintain full commercial confidentiality on all engagements.</p>
+        <button class="bg" data-pg="contact" style="margin-top:1.5rem">Discuss an advisory engagement</button>
       </div>
-      <div class="products-grid" role="list">
-        <article class="product-card reveal reveal-delay-1" role="listitem">
-          <div class="product-bg" style="background-image: url('https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=800&q=80')" role="img" aria-label="Poultry supply chain imagery"></div>
-          <div class="product-overlay" aria-hidden="true"></div>
-          <div class="product-content">
-            <div class="product-label">Protein — 01</div>
-            <h3 class="product-title">Poultry</h3>
-            <p class="product-desc">Whole birds, MDM, IQF portions, and value-added chicken cuts sourced from certified facilities in Brazil, the EU, and Thailand. Halal-certified lines for GCC and OIC markets.</p>
-            <div class="product-specs">
-              <span class="spec-tag">IQF Portions</span>
-              <span class="spec-tag">Whole Bird</span>
-              <span class="spec-tag">MDM</span>
-              <span class="spec-tag">Halal</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card reveal reveal-delay-2" role="listitem">
-          <div class="product-bg" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80')" role="img" aria-label="Beef supply chain imagery"></div>
-          <div class="product-overlay" aria-hidden="true"></div>
-          <div class="product-content">
-            <div class="product-label">Protein — 02</div>
-            <h3 class="product-title">Beef</h3>
-            <p class="product-desc">Manufacturing beef, primal cuts, and grass-fed whole carcass from Australian, Argentine, and US-origin facilities. Cold chain verified from slaughter to port.</p>
-            <div class="product-specs">
-              <span class="spec-tag">Primal Cuts</span>
-              <span class="spec-tag">Manufacturing</span>
-              <span class="spec-tag">Grass-Fed</span>
-              <span class="spec-tag">Frozen</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card reveal reveal-delay-3" role="listitem">
-          <div class="product-bg" style="background-image: url('https://images.unsplash.com/photo-1559060017-445fb9722f2a?w=800&q=80')" role="img" aria-label="Mutton and lamb supply chain imagery"></div>
-          <div class="product-overlay" aria-hidden="true"></div>
-          <div class="product-content">
-            <div class="product-label">Protein — 03</div>
-            <h3 class="product-title">Mutton & Lamb</h3>
-            <p class="product-desc">Premium mutton and spring lamb from New Zealand and southern African pastures. Preferred for Middle Eastern, African, and South Asian institutional buyers with full Halal compliance.</p>
-            <div class="product-specs">
-              <span class="spec-tag">Lamb Carcass</span>
-              <span class="spec-tag">Mutton</span>
-              <span class="spec-tag">Frozen</span>
-              <span class="spec-tag">Halal</span>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Cold Chain & QA -->
-      <div class="mt-6 reveal">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-          <div style="padding:2.5rem; border:1px solid var(--navy-border);">
-            <span class="overline">Cold Chain Capability</span>
-            <h3 class="display-sm mt-2" style="color:var(--white); margin-bottom:1rem;">Temperature-Controlled, End to End</h3>
-            <p style="color:var(--grey-mid); font-size:0.9375rem; line-height:1.8;">Our logistics infrastructure includes dedicated refrigerated container fleets, port-adjacent blast-freeze facilities, and real-time temperature monitoring. Products are shipped at verified temperatures consistent with HACCP requirements and destination-country import standards.</p>
-          </div>
-          <div style="padding:2.5rem; border:1px solid var(--navy-border);">
-            <span class="overline">Quality Assurance</span>
-            <h3 class="display-sm mt-2" style="color:var(--white); margin-bottom:1rem;">Zero Tolerance for Specification Deviation</h3>
-            <p style="color:var(--grey-mid); font-size:0.9375rem; line-height:1.8;">Every consignment undergoes pre-shipment inspection by accredited third-party surveyors. Our QA protocols include veterinary certification, phytosanitary documentation, Certificate of Origin verification, and destination-country health certification.</p>
-          </div>
-        </div>
+      <div class="rv d2">
+        <div class="pr"><div class="pn">1</div><div><div class="pt">Initial Conversation</div><div class="pb">A direct discussion of your challenge or opportunity. No sales process, just a candid exchange about whether and how we can help.</div></div></div>
+        <div class="pr"><div class="pn">2</div><div><div class="pt">Engagement Design</div><div class="pb">We agree on scope, deliverables and commercial basis. Retainer, project-based or transaction-based arrangements are all available.</div></div></div>
+        <div class="pr"><div class="pn">3</div><div><div class="pt">Active Delivery</div><div class="pb">Work begins immediately. Regular communication, transparent reporting and clear accountability throughout.</div></div></div>
+        <div class="pr"><div class="pn">4</div><div><div class="pt">Ongoing Partnership</div><div class="pb">Many advisory relationships evolve into sustained partnerships. We are built for the long term, not single engagements.</div></div></div>
       </div>
     </div>
-
-    <!-- AGRI TAB -->
-    <div class="tab-panel" id="tab-agri" role="tabpanel" aria-labelledby="btn-agri">
-      <div class="tab-intro reveal">
-        <p class="body-md text-light">Our agricultural commodities desk sources and trades bulk agri products across global supply chains — servicing food manufacturers, millers, processors, and government strategic reserve programmes.</p>
-      </div>
-      <div class="commodity-grid reveal" role="list">
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🌾</div>
-          <h3 class="commodity-title">Grains & Cereals</h3>
-          <p class="commodity-desc">Wheat, maize, sorghum, barley, and rice sourced from primary production regions across the Americas, Black Sea, and Australasia. Supplied to food manufacturers, millers, and government grain reserves.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Wheat</span>
-            <span class="spec-tag">Maize</span>
-            <span class="spec-tag">Rice</span>
-            <span class="spec-tag">Sorghum</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🫘</div>
-          <h3 class="commodity-title">Oilseeds & Pulses</h3>
-          <p class="commodity-desc">Soybeans, sunflower seed, groundnuts, lentils, and dried beans traded at volume for crushing, processing, and direct consumption markets across Africa, Asia, and the Middle East.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Soybeans</span>
-            <span class="spec-tag">Sunflower</span>
-            <span class="spec-tag">Groundnuts</span>
-            <span class="spec-tag">Lentils</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🛢️</div>
-          <h3 class="commodity-title">Edible Oils</h3>
-          <p class="commodity-desc">Bulk and packaged palm oil, soybean oil, sunflower oil, and canola traded for food manufacturing, institutional catering, and government food security supply programmes globally.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Palm Oil</span>
-            <span class="spec-tag">Sunflower Oil</span>
-            <span class="spec-tag">Soybean Oil</span>
-            <span class="spec-tag">Canola</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🍚</div>
-          <h3 class="commodity-title">Sugar & Sweeteners</h3>
-          <p class="commodity-desc">Raw and refined sugar, molasses, and sugar derivatives sourced from Brazil, South Africa, and Southeast Asia. Supplied to FMCG manufacturers, food processors, and government procurement agencies.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Raw Sugar</span>
-            <span class="spec-tag">Refined</span>
-            <span class="spec-tag">Molasses</span>
-            <span class="spec-tag">ICUMSA 45</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🥛</div>
-          <h3 class="commodity-title">Dairy & Dry Ingredients</h3>
-          <p class="commodity-desc">Skimmed milk powder (SMP), full cream milk powder (FCMP), whey powder, and butter sourced from EU, Oceania, and South American origins for food manufacturing and institutional supply.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">SMP</span>
-            <span class="spec-tag">FCMP</span>
-            <span class="spec-tag">Whey</span>
-            <span class="spec-tag">Butter</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🌿</div>
-          <h3 class="commodity-title">Feed & Crop Inputs</h3>
-          <p class="commodity-desc">Animal feed raw materials including fishmeal, soybean meal, and cottonseed cake, as well as fertilisers and crop protection inputs for the agri-processing and livestock sectors.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Soybean Meal</span>
-            <span class="spec-tag">Fishmeal</span>
-            <span class="spec-tag">Fertiliser</span>
-            <span class="spec-tag">Feed Blends</span>
-          </div>
-        </article>
-
-      </div>
-    </div>
-
-    <!-- OTHER COMMODITIES TAB -->
-    <div class="tab-panel" id="tab-other" role="tabpanel" aria-labelledby="btn-other">
-      <div class="tab-intro reveal">
-        <p class="body-md text-light">Beyond food and agri, Pyrocor's trading desk operates across select industrial and bulk commodity categories — leveraging our logistics infrastructure, compliance capability, and institutional relationships to execute at scale.</p>
-      </div>
-      <div class="commodity-grid reveal" role="list">
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">⛏️</div>
-          <h3 class="commodity-title">Metals & Minerals</h3>
-          <p class="commodity-desc">Trade structuring and execution for base metals, industrial minerals, and mining outputs — including copper, chrome, manganese, and iron ore — primarily across African production corridors.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Copper</span>
-            <span class="spec-tag">Chrome</span>
-            <span class="spec-tag">Manganese</span>
-            <span class="spec-tag">Iron Ore</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">⚗️</div>
-          <h3 class="commodity-title">Chemicals & Petrochemicals</h3>
-          <p class="commodity-desc">Bulk chemical procurement and distribution including industrial solvents, cleaning agents, and petrochemical derivatives for industrial buyers, manufacturers, and government supply programmes.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Industrial</span>
-            <span class="spec-tag">Solvents</span>
-            <span class="spec-tag">Derivatives</span>
-            <span class="spec-tag">Bulk Supply</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🌲</div>
-          <h3 class="commodity-title">Timber & Wood Products</h3>
-          <p class="commodity-desc">Hardwood and softwood timber, processed lumber, and wood-based panel products sourced from sustainably certified supply chains in Africa, South America, and Southeast Asia.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Hardwood</span>
-            <span class="spec-tag">Softwood</span>
-            <span class="spec-tag">Lumber</span>
-            <span class="spec-tag">FSC Certified</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">🏗️</div>
-          <h3 class="commodity-title">Construction Materials</h3>
-          <p class="commodity-desc">Bulk procurement and import of cement, steel, construction aggregates, and building materials for government infrastructure programmes and large-scale development projects.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Cement</span>
-            <span class="spec-tag">Steel</span>
-            <span class="spec-tag">Aggregates</span>
-            <span class="spec-tag">Gov Supply</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">⚡</div>
-          <h3 class="commodity-title">Energy Commodities</h3>
-          <p class="commodity-desc">Advisory and trade structuring for coal, LPG, biofuels, and energy transition commodities. We support energy procurement for industrial buyers and sovereign energy security programmes.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Coal</span>
-            <span class="spec-tag">LPG</span>
-            <span class="spec-tag">Biofuels</span>
-            <span class="spec-tag">Energy</span>
-          </div>
-        </article>
-
-        <article class="commodity-card" role="listitem">
-          <div class="commodity-icon" aria-hidden="true">📦</div>
-          <h3 class="commodity-title">Bespoke Commodity Trade</h3>
-          <p class="commodity-desc">Pyrocor structures bespoke trade arrangements for buyers and sellers operating in categories not listed above. Our compliance and logistics infrastructure is category-agnostic. Bring us the mandate.</p>
-          <div class="product-specs mt-3">
-            <span class="spec-tag">Custom</span>
-            <span class="spec-tag">Structured</span>
-            <span class="spec-tag">Multi-Commodity</span>
-          </div>
-        </article>
-
-      </div>
-    </div>
-
+  </div></section>
+</div>
+<!-- CAPITAL -->
+<div class="page" id="page-capital">
+  <div class="hs"><div class="hg"></div><div class="hgr"></div><div class="hf"></div>
+    <div class="hc"><div class="bdg"><div class="bl"></div><span class="bt">Pyrocor Capital</span></div><h1 class="ph1">Investing in the industries<br><em>that shape what comes next.</em></h1><p class="ple">Pyrocor Capital is the investment arm of the business. We deploy capital into forward-thinking industries and real-world opportunities where the principal has a genuine edge in identifying value before others do.</p></div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ============================================================
-     IOR / EOR SERVICES
-============================================================ -->
-<section class="section" id="ior-eor" aria-labelledby="ior-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">IOR / EOR Services</span>
-      <div class="copper-line mt-2"></div>
-      <h2 class="display-lg max-w-700 mb-2" id="ior-heading">We Take Legal Ownership. So You Don't Have To.</h2>
-      <p class="body-lg max-w-600 text-light">Whether you're moving protein, grains, chemicals, machinery, or any other regulated commodity across borders — Pyrocor serves as your Importer or Exporter of Record. Our IOR and EOR capability is fully commodity-agnostic, built on deep regulatory expertise across 80+ jurisdictions.</p>
-    </div>
-
-    <div class="services-split reveal">
-      <div class="service-panel">
-        <div class="service-icon-lg" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M8 7h8M8 11h8M8 15h4"/></svg>
-        </div>
-        <div class="service-label overline mb-2">Service 01</div>
-        <h3 class="service-title">Importer of Record (IOR)</h3>
-        <p class="service-desc">We act as the legally responsible importing entity in the destination country — managing customs entry, duties, taxes, licensing, and regulatory filings on your behalf, across any commodity class. This allows you to deliver goods into markets where you hold no local legal presence, without establishing a registered entity.</p>
-        <ul class="service-list" aria-label="IOR service capabilities">
-          <li>Full customs clearance and documentation management</li>
-          <li>Duty and tax calculation, payment and reconciliation</li>
-          <li>Import permits and licensing across 80+ markets</li>
-          <li>Commodity-specific certification coordination (veterinary, phytosanitary, SABS, etc.)</li>
-          <li>In-country compliance and regulatory liaison</li>
-          <li>Risk absorption and full legal liability management</li>
-        </ul>
+  <section class="sec"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">Our Approach</span><span class="en">01</span></div>
+    <div class="g2" style="margin-bottom:5rem">
+      <div class="rv">
+        <h2 class="sr" style="margin-bottom:2rem">Capital for<br><em>what comes next.</em></h2>
+        <p class="bp">Pyrocor Capital invests in businesses and projects operating in industries that are defining the next phase of the global economy. We are drawn to real-world opportunities with genuine commercial substance: companies solving hard problems, projects with tangible assets and founders who understand their market.</p>
+        <p class="bp">We do not follow trends. We back conviction. Our investment approach is shaped by two decades of operating in physical markets where information, relationships and timing determine outcomes. That same discipline drives how we deploy capital.</p>
+        <p class="bp">We are interested in businesses and projects across forward-thinking industries where capital, networks and commercial expertise can make a material difference to outcomes.</p>
       </div>
-
-      <div class="service-panel service-panel-accent">
-        <div class="service-icon-lg" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="M16.5 9.4l-9-5.18"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18.5" cy="15.5" r="2.5"/><path d="M20.27 17.27L22 19"/></svg>
-        </div>
-        <div class="service-label overline mb-2">Service 02</div>
-        <h3 class="service-title">Exporter of Record (EOR)</h3>
-        <p class="service-desc">Where the original seller lacks export authority, trade compliance standing, or regulatory registration, Pyrocor assumes the role of Exporter of Record — managing the full export compliance cycle for any commodity, from any origin, into any destination.</p>
-        <ul class="service-list" aria-label="EOR service capabilities">
-          <li>Export licensing and authorisation management</li>
-          <li>Bill of Lading, Certificate of Origin, health and conformity certificates</li>
-          <li>Commodity-specific export documentation (phytosanitary, CITES, dual-use, etc.)</li>
-          <li>Sanctions screening and trade compliance checks</li>
-          <li>Letter of Credit and documentary credit handling</li>
-          <li>Multi-jurisdictional and multi-commodity export coordination</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Commodity Coverage -->
-    <div class="mt-6 reveal">
-      <span class="overline">Commodity Coverage</span>
-      <h3 class="display-sm mt-2 mb-4" style="color:var(--white);">IOR / EOR Across All Commodity Classes</h3>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;">
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">
-          🥩 <strong style="color:var(--off-white); display:block; margin-bottom:0.25rem;">Protein & Food</strong>
-          Meat, poultry, seafood, dairy, processed foods
-        </div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">
-          🌾 <strong style="color:var(--off-white); display:block; margin-bottom:0.25rem;">Agricultural</strong>
-          Grains, oilseeds, sugar, edible oils, feed inputs
-        </div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">
-          ⚗️ <strong style="color:var(--off-white); display:block; margin-bottom:0.25rem;">Chemicals</strong>
-          Industrial chemicals, fertilisers, crop protection
-        </div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">
-          ⛏️ <strong style="color:var(--off-white); display:block; margin-bottom:0.25rem;">Metals & Minerals</strong>
-          Base metals, industrial minerals, ores
-        </div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">
-          🏗️ <strong style="color:var(--off-white); display:block; margin-bottom:0.25rem;">Construction & Industrial</strong>
-          Cement, steel, machinery, equipment
-        </div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">
-          📦 <strong style="color:var(--off-white); display:block; margin-bottom:0.25rem;">All Other Categories</strong>
-          Consumer goods, textiles, electronics, energy
+      <div class="rv d2">
+        <div class="g22">
+          <div class="card" style="border-top:2px solid var(--gold)"><div class="cn">Real-World Grounded</div><div class="ct">Investments with tangible substance</div><div class="cb">We back businesses and projects with real assets, real customers and real commercial logic. No speculative abstractions.</div></div>
+          <div class="card" style="border-top:2px solid var(--gold)"><div class="cn">Principal-Led</div><div class="ct">Direct involvement in every investment</div><div class="cb">The same principal who trades and advises identifies, structures and supports every capital deployment. No fund layers, no committees.</div></div>
+          <div class="card" style="border-top:2px solid var(--gold)"><div class="cn">Forward-Thinking</div><div class="ct">Industries shaping the next economy</div><div class="cb">We are drawn to sectors where structural change is underway: energy transition, food systems, industrial technology and emerging markets infrastructure.</div></div>
+          <div class="card" style="border-top:2px solid var(--gold)"><div class="cn">Conviction-Driven</div><div class="ct">We invest where we have an edge</div><div class="cb">We only back opportunities where our knowledge, networks or operating experience create a genuine advantage. We move with conviction, not consensus.</div></div>
         </div>
       </div>
     </div>
-
-    <!-- Who this is for -->
-    <div class="mt-6 reveal">
-      <span class="overline">Who We Serve</span>
-      <h3 class="display-sm mt-2 mb-4" style="color:var(--white);">Built for Organisations That Trade at Volume</h3>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem;">
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">🏛️ Government procurement agencies</div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">🏗️ Multinational manufacturers</div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">🌐 International trading houses</div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">🏥 Institutional buyers & distributors</div>
-        <div style="padding:1.5rem; border:1px solid var(--navy-border); font-family:'Space Grotesk',sans-serif; font-size:0.875rem; color:var(--grey-light);">🛳️ Producers entering new markets</div>
-      </div>
+    <div class="ey rv"><div class="er"></div><span class="et">Investment Themes</span><span class="en">02</span></div>
+    <div class="g3 rv">
+      <div class="svc"><div class="sn">Theme 01</div><div class="st">Energy Transition &amp; New Infrastructure</div><div class="sb">Businesses and projects enabling the shift to cleaner energy systems: power generation, storage, grid infrastructure, green fuels and the industrial inputs that make the transition possible. We look for early commercial traction and founders who understand the physical realities of energy.</div></div>
+      <div class="svc"><div class="sn">Theme 02</div><div class="st">Food Systems &amp; Agricultural Innovation</div><div class="sb">Investments across the food value chain: production technology, supply chain infrastructure, protein innovation and agricultural inputs. Southern Africa and emerging markets offer exceptional opportunity for those who understand the commercial and logistical realities on the ground.</div></div>
+      <div class="svc"><div class="sn">Theme 03</div><div class="st">Industrial Technology &amp; Real Assets</div><div class="sb">Businesses applying technology to real industrial problems, and asset-backed opportunities where the underlying value is clear but commercialisation or market access is the missing ingredient. We are particularly interested in Southern Africa and emerging market contexts where our networks create an advantage.</div></div>
     </div>
+  </div></section>
+  <div class="drk"><div style="max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem"><div><h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;color:#fff;margin-bottom:.4rem">Have an opportunity worth backing?</h2><p style="font-size:.88rem;font-weight:300;color:rgba(255,255,255,.42)">We are always open to a direct conversation about interesting businesses and projects.</p></div><button class="bg" data-pg="contact">Get in touch</button></div></div>
+</div>
+<!-- MARKETS -->
+<div class="page" id="page-markets">
+  <div class="hs"><div class="hg"></div><div class="hgr"></div><div class="hf"></div>
+    <div class="hc"><div class="bdg"><div class="bl"></div><span class="bt">Markets</span></div><h1 class="ph1">Active across<br><em>five commodity sectors.</em></h1><p class="ple">Pyrocor operates across five core commodity sectors with deep market knowledge, established counterparty networks and a track record of real trading activity.</p></div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ============================================================
-     ADVISORY
-============================================================ -->
-<section class="section" id="advisory" aria-labelledby="advisory-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">Advisory & Strategic Services</span>
-      <div class="copper-line mt-2"></div>
-      <h2 class="display-lg max-w-700 mb-2" id="advisory-heading">Intelligence Before Execution.</h2>
-      <p class="body-lg max-w-600 text-light">We provide governments, sovereign buyers, and institutional food operators with the market intelligence, trade architecture, and cross-border strategy required to move from intent to execution — efficiently and at minimal risk.</p>
+  <section class="sec"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">Commodity Sectors</span><span class="en">01</span></div>
+    <div class="g22 rv" style="margin-bottom:5rem">
+      <div class="card" style="border-top:2px solid var(--gold);padding:2.8rem 2.2rem"><div class="cn">Industrial Chemicals</div><div class="ct" style="font-size:1.1rem">Feedstocks, Process &amp; Specialty Chemicals</div><div class="cb">Physical trading across industrial chemical commodities serving manufacturing, agriculture, water treatment and industrial processing sectors. We structure supply arrangements between producers and end-users across Southern Africa and internationally.</div></div>
+      <div class="card" style="border-top:2px solid var(--gold);padding:2.8rem 2.2rem"><div class="cn">Minerals</div><div class="ct" style="font-size:1.1rem">Industrial Minerals &amp; Critical Commodities</div><div class="cb">Active across industrial minerals including silica and high-purity quartz, with direct involvement in project development and offtake structuring. We also trade critical mineral commodities integral to industrial production and the energy transition.</div></div>
+      <div class="card" style="border-top:2px solid var(--gold);padding:2.8rem 2.2rem"><div class="cn">Proteins</div><div class="ct" style="font-size:1.1rem">Agricultural &amp; Animal Nutrition Commodities</div><div class="cb">Physical trading of protein commodities including oilseed meal, fishmeal, animal feed ingredients and agricultural protein products. We connect producers and consumers with well-structured trading relationships across Southern Africa and export markets.</div></div>
+      <div class="card" style="border-top:2px solid var(--gold);padding:2.8rem 2.2rem"><div class="cn">Power &amp; Energy</div><div class="ct" style="font-size:1.1rem">Liquid Fuels, Gas &amp; Energy Commodities</div><div class="cb">Trading across Southern Africa's evolving energy markets including liquid fuels, natural gas, LNG and renewable energy commodities. Structural change in the region is creating significant new opportunity.</div></div>
+      <div class="card" style="border-top:2px solid var(--gold);padding:2.8rem 2.2rem"><div class="cn">Metals</div><div class="ct" style="font-size:1.1rem">Base Metals</div><div class="cb">Physical trading in copper, aluminium, zinc, lead, nickel and tin. We connect producers, smelters and industrial consumers across Southern Africa and international markets through well-structured trading relationships.</div></div>
+      <div class="card" style="border-top:2px solid var(--gold);padding:2.8rem 2.2rem;background:var(--off)"></div>
     </div>
-
-    <div class="advisory-grid" role="list">
-      <article class="advisory-card reveal reveal-delay-1" role="listitem">
-        <div class="advisory-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10M10 20V4M14 20V14M18 20V8"/></svg>
-        </div>
-        <h3 class="advisory-title">Market Intelligence</h3>
-        <p class="advisory-desc">Real-time and forward-looking analysis of global protein markets — including pricing benchmarks, supply forecasts, regulatory environment shifts, and competitor positioning in target import markets.</p>
-      </article>
-
-      <article class="advisory-card reveal reveal-delay-2" role="listitem">
-        <div class="advisory-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 class="advisory-title">Trade Structuring</h3>
-        <p class="advisory-desc">Design of bespoke trade arrangements including offtake agreements, forward contracts, back-to-back structures, and financing-linked procurement vehicles tailored for institutional buyers.</p>
-      </article>
-
-      <article class="advisory-card reveal reveal-delay-3" role="listitem">
-        <div class="advisory-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
-        <h3 class="advisory-title">Supply Chain Design</h3>
-        <p class="advisory-desc">End-to-end supply chain architecture consulting — from origin facility selection and transport mode optimisation to destination market entry strategy and cold storage infrastructure assessment.</p>
-      </article>
-
-      <article class="advisory-card reveal reveal-delay-1" role="listitem">
-        <div class="advisory-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 class="advisory-title">Cross-Border Risk Management</h3>
-        <p class="advisory-desc">Identification and mitigation of regulatory, counterparty, currency, and logistics risk across trade transactions — supported by our in-house compliance and legal coordination capabilities.</p>
-      </article>
-
-      <article class="advisory-card reveal reveal-delay-2" role="listitem">
-        <div class="advisory-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="advisory-title">Government & Institutional Advisory</h3>
-        <p class="advisory-desc">Dedicated advisory for sovereign procurement agencies, central government food authorities, and multilateral food security initiatives — including strategic reserve design and emergency supply planning.</p>
-      </article>
-
-      <article class="advisory-card reveal reveal-delay-3" role="listitem">
-        <div class="advisory-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-        </div>
-        <h3 class="advisory-title">Market Entry Strategy</h3>
-        <p class="advisory-desc">Country-specific market entry frameworks for producers and distributors seeking first-time access to regulated import markets — including regulatory pre-clearance strategy and buyer identification.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     OPERATIONS & ESG
-============================================================ -->
-<section class="section" id="operations" style="background:var(--navy-mid);" aria-labelledby="ops-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">Global Operations</span>
-      <div class="copper-line mt-2"></div>
-      <h2 class="display-lg max-w-700 mb-2" id="ops-heading">Operational Precision at Every Point of the Chain</h2>
-      <p class="body-lg max-w-600 text-light">Our operations capability is designed for institutional volumes, complex logistics requirements, and multi-jurisdictional trade compliance — executed with the precision demanded by sovereign and institutional buyers.</p>
-    </div>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3.5rem;">
-      <div class="reveal" style="padding:2.5rem; border:1px solid var(--navy-border);">
-        <span class="overline">Logistics</span>
-        <h3 class="display-sm mt-2 mb-3" style="color:var(--white);">Shipping & Freight</h3>
-        <p style="color:var(--grey-mid); font-size:0.9375rem; line-height:1.8; margin-bottom:1.5rem;">We operate within established freight networks alongside tier-one ocean carriers and specialist refrigerated logistics providers. Our freight team manages container booking, vessel scheduling, port coordination, and last-mile cold chain continuity — with documented handoff protocols at every custody transfer point.</p>
-        <ul class="service-list">
-          <li>Reefer container booking & management</li>
-          <li>FCL and LCL cargo consolidation</li>
-          <li>Multi-port transshipment capability</li>
-          <li>Insurance and marine cargo coverage</li>
-        </ul>
+    <div class="ey rv"><div class="er"></div><span class="et">Geographic Reach</span><span class="en">02</span></div>
+    <div class="g2">
+      <div class="rv">
+        <h2 class="sr" style="margin-bottom:2rem">Southern Africa at the core.<br><em>Global in reach.</em></h2>
+        <p class="bp">Pyrocor's primary operating market is Southern Africa, with deep knowledge of South Africa, the SADC region and the logistics, regulatory and commercial landscape across the corridor.</p>
+        <p class="bp">Our counterparty network extends globally. We have traded into more than 20 countries across Europe, Asia and the Americas and maintain established relationships with buyers, sellers and processors across these markets.</p>
       </div>
-
-      <div class="reveal reveal-delay-2" style="padding:2.5rem; border:1px solid var(--navy-border);">
-        <span class="overline">Compliance</span>
-        <h3 class="display-sm mt-2 mb-3" style="color:var(--white);">Risk & Trade Compliance</h3>
-        <p style="color:var(--grey-mid); font-size:0.9375rem; line-height:1.8; margin-bottom:1.5rem;">Every transaction is screened against applicable trade compliance frameworks including OFAC, EU sanctions lists, and destination-country import restrictions. Our compliance function maintains up-to-date regulatory intelligence and ensures zero-tolerance adherence to documentation requirements.</p>
-        <ul class="service-list">
-          <li>Sanctions and AML screening</li>
-          <li>Counterparty due diligence</li>
-          <li>Documentary credit management</li>
-          <li>Regulatory intelligence monitoring</li>
-        </ul>
-      </div>
+      <div class="g22 rv d2"><div class="stat"><div class="stn">SA</div><div class="stl">Primary market with full regulatory and logistics knowledge</div></div><div class="stat"><div class="stn">SADC</div><div class="stl">Active across the Southern African Development Community</div></div><div class="stat"><div class="stn">EU</div><div class="stl">Established counterparty relationships across European markets</div></div><div class="stat"><div class="stn">20<sup>+</sup></div><div class="stl">Countries traded into across a 20+ year career</div></div></div>
     </div>
-  </div>
-</section>
-
+  </div></section>
+  <div class="drk"><div style="max-width:1300px;margin:0 auto"><div class="ey" style="margin-bottom:2rem"><div class="er"></div><span class="et">Market Coverage</span></div><div class="tags rv"><span class="tag">Industrial Chemicals</span><span class="tag">Feedstocks</span><span class="tag">Process Chemicals</span><span class="tag">Specialty Chemicals</span><span class="tag">Silica &amp; Quartz</span><span class="tag">Industrial Minerals</span><span class="tag">Critical Minerals</span><span class="tag">Oilseed Meal</span><span class="tag">Fishmeal</span><span class="tag">Animal Feed Ingredients</span><span class="tag">Agricultural Proteins</span><span class="tag">Liquid Fuels</span><span class="tag">Natural Gas</span><span class="tag">LNG</span><span class="tag">Renewable Energy Commodities</span><span class="tag">Copper</span><span class="tag">Aluminium</span><span class="tag">Zinc</span><span class="tag">Lead</span><span class="tag">Nickel</span><span class="tag">Tin</span></div></div></div>
+</div>
 <!-- ESG -->
-<section class="section" id="esg" aria-labelledby="esg-heading">
-  <div class="container">
-    <div class="reveal text-center">
-      <span class="overline">ESG Commitment</span>
-      <div class="copper-line mt-2 mx-auto"></div>
-      <h2 class="display-lg max-w-700 mx-auto mb-2" id="esg-heading">Trade That Leaves the World Better</h2>
-      <p class="body-lg max-w-600 mx-auto text-light">Pyrocor embeds environmental, social, and governance principles into every transaction and partnership decision. We do not trade with facilities that fail our ethical sourcing standards.</p>
-    </div>
-
-    <div class="esg-grid reveal" role="list">
-      <article class="esg-card" role="listitem">
-        <div class="esg-letter" aria-hidden="true">E</div>
-        <h3 class="esg-title">Environmental</h3>
-        <p class="esg-desc">We prioritise supply chains with certified low deforestation practices, regulated land-use compliance, and audited water management standards. All partner facilities must meet or exceed regional environmental certifications.</p>
-      </article>
-
-      <article class="esg-card" role="listitem">
-        <div class="esg-letter" aria-hidden="true">S</div>
-        <h3 class="esg-title">Social</h3>
-        <p class="esg-desc">We source exclusively from facilities compliant with ILO labour standards and prohibit all forms of forced or child labour. Our supply chains are subject to third-party social audits and transparent labour reporting.</p>
-      </article>
-
-      <article class="esg-card" role="listitem">
-        <div class="esg-letter" aria-hidden="true">G</div>
-        <h3 class="esg-title">Governance</h3>
-        <p class="esg-desc">Our governance framework includes independent compliance oversight, clear counterparty accountability structures, anti-bribery and corruption policies, and full financial transparency for institutional trading partners.</p>
-      </article>
-    </div>
+<div class="page" id="page-esg">
+  <div class="hs" style="background:linear-gradient(145deg,#091a10 0%,#0f2d1a 55%,#142e1e 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 75% 55%,rgba(45,106,79,.2) 0%,transparent 65%)"></div>
+    <div class="hgr"></div><div class="hf"></div>
+    <div class="hc"><div class="bdg"><div class="bl" style="background:#52b788"></div><span class="bt" style="color:#52b788">ESG</span></div><h1 class="ph1">Responsible trading<br>for a <em>sustainable future.</em></h1><p class="ple">At Pyrocor, ESG is not a compliance exercise. It is built into how we trade, who we trade with and the opportunities we invest in.</p></div>
   </div>
-</section>
-
-<!-- ============================================================
-     ABOUT
-============================================================ -->
-<section class="section" id="about" style="background:var(--navy-mid);" aria-labelledby="about-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">About Pyrocor</span>
-      <div class="copper-line mt-2"></div>
-    </div>
-
-    <div class="about-grid">
-      <div>
-        <h2 class="display-lg reveal" id="about-heading">Built to Trade at the Highest Level.</h2>
-        <p class="body-lg text-light mt-3 reveal">Pyrocor was established to address a gap in global protein trade: the absence of a compliant, financially capable, operationally sophisticated trading entity capable of serving institutional and sovereign buyers with the rigour they require.</p>
-        <p class="body-md text-grey mt-3 reveal">We are not a broker. We are not a marketplace. We are a principal trading house — taking positions, absorbing complexity, and delivering results. Our principals bring decades of combined experience in commodity trade, logistics, regulatory compliance, and institutional deal-making.</p>
-
-        <div class="philosophy-block reveal mt-4">
-          <blockquote class="philosophy-quote">
-            "We don't facilitate trade. We execute it — with full accountability, from first contact to final delivery."
-          </blockquote>
-          <p style="font-family:'Space Grotesk',sans-serif; font-size:0.8rem; color:var(--grey-mid); letter-spacing:0.1em; text-transform:uppercase;">— Pyrocor Leadership</p>
-        </div>
+  <section class="sec"><div class="si">
+    <div class="ey rv"><div class="er"></div><span class="et">Our ESG Framework</span><span class="en">01</span></div>
+    <div class="g2" style="align-items:start;margin-bottom:5rem">
+      <div class="rv">
+        <h2 class="sr" style="margin-bottom:2rem">ESG at the heart<br>of <em>every decision.</em></h2>
+        <p class="bp">Pyrocor operates across commodity sectors that sit at the heart of the global sustainability agenda: minerals critical to the energy transition, cleaner energy commodities, agricultural proteins supporting food security, base metals essential to modern industry and industrial chemicals underpinning more efficient production.</p>
+        <p class="bp">Our principal has been active at this intersection for over two decades, navigating markets where environmental standards, social responsibility and governance quality are increasingly core to commercial viability.</p>
+        <p class="bp">We apply ESG principles across our trading activity, advisory engagements and investment decisions — including how we select counterparties, structure transactions and which opportunities we choose to support.</p>
       </div>
-
-      <div class="mvv-stack reveal">
-        <div class="mvv-card">
-          <div class="mvv-label">Mission</div>
-          <p class="mvv-text">To provide governments, institutional buyers, and multinational food operators with reliable, compliant, and scalable access to global protein supply chains — managed with operational integrity and strategic intelligence.</p>
-        </div>
-
-        <div class="mvv-card">
-          <div class="mvv-label">Vision</div>
-          <p class="mvv-text">To be the most trusted name in global protein trade — recognised by sovereign buyers, multinational trading houses, and institutional investors for uncompromising standards and consistent delivery.</p>
-        </div>
-
-        <div class="mvv-card">
-          <div class="mvv-label">Philosophy</div>
-          <p class="mvv-text">We believe that global trade, when done properly, is one of the most powerful instruments for economic stability and food security. We take that responsibility seriously in every transaction we execute.</p>
-        </div>
-
-        <div class="mvv-card">
-          <div class="mvv-label">Governance & Compliance</div>
-          <p class="mvv-text">Pyrocor operates within a robust governance framework aligned with international trade finance standards, AML/KYC requirements, and destination-market regulatory obligations. Compliance is not a function at Pyrocor — it is a founding principle.</p>
-        </div>
+      <div class="rv d2" style="display:flex;flex-direction:column;gap:1rem">
+        <div class="ec ece"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#2d6a4f" stroke-width="1.4"/><path d="M14 26c2-6 8-10 12-8M20 12v4M12 18h4" stroke="#2d6a4f" stroke-width="1.4" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="#2d6a4f" opacity=".4"/></svg><div class="et2">Environmental</div><div class="eb">We prioritise commodity sectors and transactions that support the energy transition, reduce emissions intensity and enable more efficient use of natural resources. Environmental responsibility is core to our market thesis.</div></div>
+        <div class="ec ecs"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="14" cy="14" r="5" stroke="#1d6fa4" stroke-width="1.4"/><circle cx="26" cy="14" r="5" stroke="#1d6fa4" stroke-width="1.4"/><path d="M6 32c0-5 3.6-9 8-9h12c4.4 0 8 4 8 9" stroke="#1d6fa4" stroke-width="1.4" stroke-linecap="round"/></svg><div class="et2">Social</div><div class="eb">We support fair dealing with all counterparties, uphold labour and human rights standards across our supply chains and contribute to the development of sustainable commodity markets in Southern Africa.</div></div>
+        <div class="ec ecg"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="9" y="17" width="22" height="16" rx="1" stroke="#c8a84b" stroke-width="1.4"/><path d="M15 17v-4a5 5 0 0 1 10 0v4" stroke="#c8a84b" stroke-width="1.4" stroke-linecap="round"/><circle cx="20" cy="25" r="2.5" fill="#c8a84b" opacity=".5"/></svg><div class="et2">Governance</div><div class="eb">Pyrocor operates with full transparency, clear contractual frameworks and a zero-tolerance approach to corruption and unethical practice. We hold every counterparty and investee to the same standards.</div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     WHY PYROCOR
-============================================================ -->
-<section class="section" aria-labelledby="why-heading">
-  <div class="container">
-    <div class="reveal text-center">
-      <span class="overline">Why Pyrocor</span>
-      <div class="copper-line mt-2 mx-auto"></div>
-      <h2 class="display-lg max-w-700 mx-auto mb-4" id="why-heading">Six Reasons the World's Most Demanding Buyers Choose Us</h2>
-    </div>
-
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-number">01</div>
-        <h3 class="why-title">Principal, Not Intermediary</h3>
-        <p class="why-desc">We trade as principal — taking legal and financial ownership of goods. This means you have a single, accountable counterparty, not a network of unnamed brokers.</p>
-      </div>
-
-      <div class="why-card reveal reveal-delay-1">
-        <div class="why-number">02</div>
-        <h3 class="why-title">Compliance-First Architecture</h3>
-        <p class="why-desc">Every transaction is structured around regulatory compliance — not as an afterthought, but as the foundation. We are fluent in the regulatory language of 40+ import markets.</p>
-      </div>
-
-      <div class="why-card reveal reveal-delay-2">
-        <div class="why-number">03</div>
-        <h3 class="why-title">Cold Chain Integrity</h3>
-        <p class="why-desc">Our logistics model is built around verified temperature control from facility to port to final delivery — with documented chain of custody at every custody transfer.</p>
-      </div>
-
-      <div class="why-card reveal reveal-delay-1">
-        <div class="why-number">04</div>
-        <h3 class="why-title">Institutional-Grade Documentation</h3>
-        <p class="why-desc">Our documentation standards meet the requirements of the world's most demanding regulatory bodies — including USDA, EFSA, FSANZ, and relevant veterinary authorities worldwide.</p>
-      </div>
-
-      <div class="why-card reveal reveal-delay-2">
-        <div class="why-number">05</div>
-        <h3 class="why-title">Financial Capacity</h3>
-        <p class="why-desc">We have the financial architecture to support large-scale transactions — including trade finance, letters of credit, and back-to-back payment structures aligned with sovereign buyer requirements.</p>
-      </div>
-
-      <div class="why-card reveal reveal-delay-3">
-        <div class="why-number">06</div>
-        <h3 class="why-title">Strategic Intelligence</h3>
-        <p class="why-desc">Beyond execution, we bring market intelligence, supply chain foresight, and strategic advisory capability that positions our buyers ahead of disruption rather than reacting to it.</p>
+    <div class="dv" style="margin-bottom:4rem"></div>
+    <div class="ey rv"><div class="er"></div><span class="et">Our Commitments</span><span class="en">02</span></div>
+    <div class="g2">
+      <div class="rv"><h2 class="sr" style="margin-bottom:2rem">What we commit<br><em>to in practice.</em></h2><p class="bp">Our ESG commitments are practical and verifiable. They reflect the way we have always operated and the standards we hold across trading, advisory and investment.</p></div>
+      <div class="rv d2">
+        <div class="com"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2d6a4f" stroke-width="1.2"/><path d="M6 10l3 3 5-5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="comt">Energy Transition Alignment</div><div class="comb">We actively develop market access and investment exposure to commodities critical to cleaner energy, battery technology and decarbonisation infrastructure.</div></div></div>
+        <div class="com"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2d6a4f" stroke-width="1.2"/><path d="M6 10l3 3 5-5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="comt">Responsible Counterparty Selection</div><div class="comb">We conduct due diligence on the environmental and governance standards of our trading partners and investment counterparties. We will not work with entities that fall short of our standards.</div></div></div>
+        <div class="com"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2d6a4f" stroke-width="1.2"/><path d="M6 10l3 3 5-5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="comt">Anti-Corruption &amp; Full Compliance</div><div class="comb">Zero tolerance for bribery, corruption or sanctions violations. We operate within full legal and regulatory compliance in all jurisdictions.</div></div></div>
+        <div class="com"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2d6a4f" stroke-width="1.2"/><path d="M6 10l3 3 5-5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="comt">Food Security &amp; Agricultural Responsibility</div><div class="comb">In our protein trading activities we uphold responsible sourcing standards and support supply chains that contribute to food security across Southern Africa.</div></div></div>
+        <div class="com"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2d6a4f" stroke-width="1.2"/><path d="M6 10l3 3 5-5" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="comt">Transparent Reporting</div><div class="comb">We commit to open and honest communication with all stakeholders on ESG matters and support clients in improving their own ESG reporting.</div></div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     CTA BAND
-============================================================ -->
-<div class="cta-band">
-  <div class="container">
-    <span class="overline reveal">Ready to Trade</span>
-    <h2 class="display-lg mt-3 reveal" style="color:var(--white);">Trade With Precision. <em class="text-copper">Trade With Pyrocor.</em></h2>
-    <p class="reveal">Whether you're a government agency, institutional buyer, or multinational trading house — our team is ready to structure, execute, and deliver at scale.</p>
-    <div class="cta-buttons reveal">
-      <a href="#contact" class="btn btn-primary">
-        Submit Trade Enquiry
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </a>
-      <a href="/cdn-cgi/l/email-protection#87f3f5e6e3e2c7f7fef5e8e4e8f5a9e4e8a9fde6" class="btn btn-outline"><span class="__cf_email__" data-cfemail="77030516131237070e0518141805591418590d16">[email&#160;protected]</span></a>
-    </div>
-  </div>
+  </div></section>
 </div>
-
-<!-- ============================================================
-     CONTACT
-============================================================ -->
-<section class="section" id="contact" aria-labelledby="contact-heading">
-  <div class="container">
-    <div class="reveal">
-      <span class="overline">Contact & Trade Enquiry</span>
-      <div class="copper-line mt-2"></div>
-    </div>
-
-    <div class="contact-grid">
-      <div>
-        <h2 class="display-md reveal" id="contact-heading">Begin a Conversation</h2>
-        <p class="body-md text-light mt-3 reveal">Pyrocor engages exclusively with verified institutional counterparties. Submit your enquiry and a member of our trade team will respond within one business day.</p>
-
-        <div class="contact-detail reveal">
-          <div class="contact-item">
-            <div class="contact-item-label">Global Headquarters</div>
-            <div class="contact-item-value">Pyrocor Trading House<br/>International Trade & Finance District<br/>South Africa</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Trade Enquiries</div>
-            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#63171102070623131a110c000c114d000c4d1902" style="color:var(--grey-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="3d494f5c59587d4d444f525e524f135e5213475c">[email&#160;protected]</span></a></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">IOR / EOR Services</div>
-            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#1d7e72706d71747c737e785d6d646f727e726f337e7233677c" style="color:var(--grey-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="bfdcd0d2cfd3d6ded1dcdaffcfc6cdd0dcd0cd91dcd091c5de">[email&#160;protected]</span></a></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Advisory Services</div>
-            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#c5a4a1b3acb6aab7bc85b5bcb7aaa6aab7eba6aaebbfa4" style="color:var(--grey-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="056461736c766a777c45757c776a666a772b666a2b7f64">[email&#160;protected]</span></a></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Operations Hours</div>
-            <div class="contact-item-value">Monday – Friday, 08:00 – 18:00 SAST<br/>Emergency trade line: 24/7</div>
-          </div>
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <div class="hs" style="min-height:380px"><div class="hg"></div><div class="hgr"></div><div class="hf"></div>
+    <div class="hc" style="padding-bottom:4rem"><div class="bdg"><div class="bl"></div><span class="bt">Contact</span></div><h1 class="ph1">Let's find<br><em>the opportunity.</em></h1><p class="ple">Whether it is a trading enquiry, an advisory engagement or a capital opportunity, every conversation starts in the same place.</p></div>
+  </div>
+  <section class="sec"><div class="si">
+    <div class="g2">
+      <div class="rv">
+        <div class="ey" style="margin-bottom:2rem"><div class="er"></div><span class="et">Get in Touch</span></div>
+        <h2 class="sr" style="margin-bottom:1.5rem">Direct.<br><em>No intermediaries.</em></h2>
+        <p class="bp">All enquiries across all three divisions are handled personally by the principal. Whether you are looking to trade, need advisory support or have an investment opportunity to discuss, reach out directly.</p>
+        <p class="bp">Expect a response within one business day.</p>
+        <div style="margin-top:2.5rem">
+          <div class="cr"><span class="cl">Email</span><span class="cv"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3352575e5a5d73434a415c505c411d505c1d4952">[email&#160;protected]</a></span></div>
+          <div class="cr"><span class="cl">Location</span><span class="cv">Johannesburg, Gauteng<br>South Africa</span></div>
+          <div class="cr"><span class="cl">Geographies</span><span class="cv">Southern Africa &middot; SADC &middot; Europe &middot; Global</span></div>
         </div>
       </div>
-
-      <!-- Trade Enquiry Form -->
-      <div class="reveal">
-        <form id="tradeForm" novalidate aria-label="Trade enquiry form">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="fullName">Full Name *</label>
-              <input class="form-input" type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="Your full name" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="company">Organisation / Company *</label>
-              <input class="form-input" type="text" id="company" name="company" required placeholder="Company name" />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="email">Email Address *</label>
-              <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="your@company.com" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="phone">Phone / WhatsApp</label>
-              <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 000 000 0000" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="buyerType">Type of Organisation *</label>
-            <select class="form-select" id="buyerType" name="buyerType" required>
-              <option value="" disabled selected>Select organisation type</option>
-              <option value="government">Government / Sovereign Procurement</option>
-              <option value="institutional">Institutional Food Buyer</option>
-              <option value="distributor">Distributor / Wholesaler</option>
-              <option value="food-group">Multinational Food Group</option>
-              <option value="trading-house">Trading House</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="service">Service Required *</label>
-            <select class="form-select" id="service" name="service" required>
-              <option value="" disabled selected>Select service</option>
-              <option value="protein-trading">Protein Trading (Poultry / Beef / Mutton)</option>
-              <option value="ior">Importer of Record (IOR)</option>
-              <option value="eor">Exporter of Record (EOR)</option>
-              <option value="advisory">Strategic Advisory</option>
-              <option value="multiple">Multiple Services</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="volume">Estimated Volume (MT per month)</label>
-              <select class="form-select" id="volume" name="volume">
-                <option value="" disabled selected>Select volume range</option>
-                <option value="under-100">Under 100 MT</option>
-                <option value="100-500">100 – 500 MT</option>
-                <option value="500-2000">500 – 2,000 MT</option>
-                <option value="2000-plus">2,000+ MT</option>
+      <div class="rv d2">
+        <div style="background:var(--off);padding:2.5rem">
+          <div style="font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--navy);margin-bottom:1.8rem">Send us a message</div>
+          <form id="ctf" action="https://formspree.io/f/REPLACE_WITH_YOUR_CODE" method="POST">
+            <div class="fg"><label class="fl">Your name</label><input type="text" name="name" class="fi" placeholder="Full name" required></div>
+            <div class="fg"><label class="fl">Email address</label><input type="email" name="email" class="fi" placeholder="you@company.com" required></div>
+            <div class="fg"><label class="fl">Organisation</label><input type="text" name="organisation" class="fi" placeholder="Company name"></div>
+            <div class="fg"><label class="fl">Division</label>
+              <select name="division" class="fsl">
+                <option value="">Select one...</option>
+                <option>Pyrocor Trading</option>
+                <option>Pyrocor Advisory</option>
+                <option>Pyrocor Capital</option>
+                <option>General enquiry</option>
               </select>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="destination">Destination Country/Region</label>
-              <input class="form-input" type="text" id="destination" name="destination" placeholder="e.g. UAE, West Africa, SEA" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="timeline">Estimated Start Timeline</label>
-            <select class="form-select" id="timeline" name="timeline">
-              <option value="" disabled selected>Select timeline</option>
-              <option value="immediate">Immediate (within 30 days)</option>
-              <option value="q1">Within 1–3 months</option>
-              <option value="q2">3–6 months</option>
-              <option value="planning">Planning phase (6+ months)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="message">Brief on Requirements</label>
-            <textarea class="form-textarea" id="message" name="message" placeholder="Describe your requirements, product specifications, or questions..."></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
-            Submit Trade Enquiry
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          </button>
-
-          <p style="font-size:0.8rem; color:var(--grey-mid); margin-top:1rem; text-align:center;">
-            By submitting this form you agree to our <a href="#privacy" style="color:var(--copper);">Privacy Policy</a>. Your enquiry is treated with strict commercial confidentiality.
-          </p>
-        </form>
-
-        <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
-          <div style="font-size:2rem; margin-bottom:1rem;">✓</div>
-          <h3>Enquiry Received</h3>
-          <p>Thank you for your trade enquiry. A member of the Pyrocor team will respond within one business day. For urgent requirements, please contact <a href="/cdn-cgi/l/email-protection#3b4f495a5f5e7b4b42495458544915585415415a" style="color:var(--copper);"><span class="__cf_email__" data-cfemail="a9dddbc8cdcce9d9d0dbc6cac6db87cac687d3c8">[email&#160;protected]</span></a> directly.</p>
+            <div class="fg"><label class="fl">Message</label><textarea name="message" class="fta" placeholder="Tell us about your commodity challenge, opportunity or enquiry..." required></textarea></div>
+            <button type="submit" class="bn" style="width:100%;justify-content:center">Send message <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </form>
+          <div id="fok" style="display:none;margin-top:1rem;padding:1rem;background:#e8f5e9;border-left:3px solid #2d6a4f;font-size:.85rem;color:#2d6a4f">Thank you, your message has been sent. We will be in touch within one business day.</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     FOOTER
-============================================================ -->
-<footer role="contentinfo">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" class="nav-logo" style="margin-bottom:1.25rem; display:inline-flex;" aria-label="Pyrocor - Back to top">
-          <div class="logo-mark">
-            <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <polygon points="19,2 36,34 2,34" stroke="#B87333" stroke-width="2" fill="none"/>
-              <polygon points="19,10 30,30 8,30" fill="#B87333" opacity="0.25"/>
-            </svg>
-          </div>
-          <span class="logo-text">PYRO<span>COR</span></span>
-        </a>
-        <p class="footer-tagline">Global commodity trading house specialising in protein trade, IOR/EOR services, and strategic advisory for institutional and sovereign buyers worldwide.</p>
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--copper); margin-top:1.5rem;">Precision. Scale. Trust.</p>
-      </div>
-
-      <nav aria-label="Trading footer navigation">
-        <div class="footer-nav-title">Trading</div>
-        <ul class="footer-links">
-          <li><a href="#trading">Poultry</a></li>
-          <li><a href="#trading">Beef</a></li>
-          <li><a href="#trading">Mutton & Lamb</a></li>
-          <li><a href="#trading">Cold Chain</a></li>
-          <li><a href="#trading">Quality Assurance</a></li>
-        </ul>
-      </nav>
-
-      <nav aria-label="Services footer navigation">
-        <div class="footer-nav-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#ior-eor">IOR Services</a></li>
-          <li><a href="#ior-eor">EOR Services</a></li>
-          <li><a href="#advisory">Market Intelligence</a></li>
-          <li><a href="#advisory">Trade Structuring</a></li>
-          <li><a href="#advisory">Government Advisory</a></li>
-        </ul>
-      </nav>
-
-      <nav aria-label="Company footer navigation">
-        <div class="footer-nav-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#about">About Pyrocor</a></li>
-          <li><a href="#operations">Global Operations</a></li>
-          <li><a href="#esg">ESG Policy</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#6a1e180b0e0f2a1a13180509051844090544100b"><span class="__cf_email__" data-cfemail="2d595f4c49486d5d545f424e425f034e4203574c">[email&#160;protected]</span></a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <!-- Legal Disclaimer -->
-    <div style="padding:2rem; border:1px solid var(--navy-border); margin-bottom:2rem; background:rgba(17,24,40,0.5);">
-      <p style="font-size:0.75rem; color:var(--grey-mid); line-height:1.7;">
-        <strong style="color:var(--grey-light); font-family:'Space Grotesk',sans-serif; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;">Legal Disclaimer:</strong>
-        The information on this website is provided for general informational purposes only and does not constitute an offer, solicitation, or binding commitment to trade. All trade transactions are subject to formal agreement, due diligence, and applicable regulatory approval. Pyrocor makes no representation as to the completeness, accuracy, or timeliness of information on this site. Commodity trade involves significant financial and operational risks; prospective counterparties should conduct independent due diligence before engaging. Pyrocor operates in compliance with applicable international trade regulations, AML/KYC requirements, and sanctions frameworks. This website is not directed at jurisdictions where its content would be prohibited.
-      </p>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="footer-legal">
-        © 2025 Pyrocor. All rights reserved. Registered trading entity. All transactions subject to applicable law.
-      </div>
-      <div class="footer-legal-links">
-        <a href="#privacy" id="privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Use</a>
-        <a href="#compliance">Compliance</a>
-      </div>
-    </div>
+  </div></section>
+</div>
+<footer>
+  <div class="ft">
+    <div style="font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:400;letter-spacing:.03em;color:rgba(255,255,255,.5)">Pyrocor</div>
+    <ul class="flk">
+      <li><button data-pg="home">Home</button></li><li><button data-pg="about">About</button></li>
+      <li><button data-pg="trading">Trading</button></li><li><button data-pg="advisory">Advisory</button></li>
+      <li><button data-pg="capital">Capital</button></li><li><button data-pg="markets">Markets</button></li>
+      <li><button data-pg="esg">ESG</button></li><li><button data-pg="contact">Contact</button></li>
+    </ul>
+    <div class="fcp">&copy; 2025 Pyrocor. All rights reserved.</div>
   </div>
 </footer>
-
-<!-- ============================================================
-     JAVASCRIPT
-============================================================ -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ---- TRADING TABS ----
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
-      // Update buttons
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      // Update panels
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('tab-' + target).classList.add('active');
-      // Re-trigger reveals in newly visible panel
-      document.querySelectorAll('#tab-' + target + ' .reveal:not(.visible)').forEach(el => {
-        setTimeout(() => el.classList.add('visible'), 50);
-      });
+(function(){
+  var PG=['home','about','trading','advisory','capital','markets','esg','contact'];
+  function goTo(id){
+    if(PG.indexOf(id)===-1)id='home';
+    PG.forEach(function(p){var e=document.getElementById('page-'+p);if(e)e.classList.remove('active');});
+    var t=document.getElementById('page-'+id);if(t)t.classList.add('active');
+    document.querySelectorAll('.nl li button[data-pg]').forEach(function(b){b.classList.toggle('act',b.getAttribute('data-pg')===id);});
+    document.querySelectorAll('#mob button[data-pg]').forEach(function(b){b.classList.toggle('act',b.getAttribute('data-pg')===id);});
+    var nav=document.getElementById('nav');
+    if(id==='home')nav.classList.remove('sol');else nav.classList.add('sol');
+    window.scrollTo(0,0);
+    try{history.pushState({pg:id},'','#'+id);}catch(e){}
+    setTimeout(reveal,80);
+  }
+  function reveal(){
+    var a=document.querySelector('.page.active');if(!a)return;
+    var els=a.querySelectorAll('.rv:not(.on)');if(!els.length)return;
+    if(window.IntersectionObserver){
+      var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:0.08});
+      els.forEach(function(el){io.observe(el);});
+    }else{els.forEach(function(el){el.classList.add('on');});}
+  }
+  window.addEventListener('scroll',function(){
+    var a=document.querySelector('.page.active');
+    if(a&&a.id==='page-home')document.getElementById('nav').classList.toggle('sol',window.scrollY>80);
+  });
+  document.querySelectorAll('[data-pg]').forEach(function(b){
+    b.addEventListener('click',function(){goTo(this.getAttribute('data-pg'));document.getElementById('mob').classList.remove('open');});
+  });
+  document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mob').classList.add('open');});
+  document.getElementById('mcl').addEventListener('click',function(){document.getElementById('mob').classList.remove('open');});
+  var form=document.getElementById('ctf');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+        .then(function(r){if(r.ok){form.style.display='none';document.getElementById('fok').style.display='block';}else{alert('There was a problem. Please email admin@pyrocor.co.za directly.');}})
+        .catch(function(){alert('There was a problem. Please email admin@pyrocor.co.za directly.');});
     });
-  });
-
-  // ---- NAVBAR SCROLL ----
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // ---- MOBILE MENU ----
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuClose = document.getElementById('menuClose');
-
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-
-  menuClose.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-
-  // ---- SCROLL REVEAL ----
-  const reveals = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-   
+  }
+  // Scroll to divisions section
+  var scrollBtn=document.getElementById('scrollDivisions');
+  if(scrollBtn){scrollBtn.addEventListener('click',function(){var el=document.getElementById('divisions-section');if(el)el.scrollIntoView({behavior:'smooth'});});}
+  window.addEventListener('popstate',function(e){goTo((e.state&&e.state.pg)?e.state.pg:'home');});
+  var h=window.location.hash.replace('#','');
+  goTo(PG.indexOf(h)!==-1?h:'home');
+})();
+</script>
+</body>
+</html>
