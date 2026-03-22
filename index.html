@@ -489,7 +489,7 @@ footer{background:var(--navy);padding:2.8rem 3.5rem}
         <p class="bp">All enquiries are handled by the principal directly. Pyrocor is a small business and that is by design. You deal with the person who makes the decisions.</p>
         <p class="bp">Expect a response within one business day.</p>
         <div style="margin-top:2.5rem">
-          <div class="cr"><span class="cl">Email</span><span class="cv"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3352575e5a5d73434a415c505c411d505c1d4952">[email&#160;protected]</a></span></div>
+          <div class="cr"><span class="cl">Email</span><span class="cv">admin&#64;pyrocor&#46;co&#46;za</span></div>
           <div class="cr"><span class="cl">Location</span><span class="cv">Johannesburg, Gauteng<br>South Africa</span></div>
           <div class="cr"><span class="cl">Geographies</span><span class="cv">Southern Africa &middot; SADC &middot; Europe &middot; Global</span></div>
         </div>
@@ -497,7 +497,7 @@ footer{background:var(--navy);padding:2.8rem 3.5rem}
       <div class="rv d2">
         <div style="background:var(--off);padding:2.5rem">
           <div style="font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--navy);margin-bottom:1.8rem">Send us a message</div>
-          <form id="ctf" action="https://formspree.io/f/xjgadqqo" method="POST">
+          <form id="ctf">
             <div class="fg"><label class="fl">Your name</label><input type="text" name="name" class="fi" placeholder="Full name" required></div>
             <div class="fg"><label class="fl">Email address</label><input type="email" name="email" class="fi" placeholder="you@company.com" required></div>
             <div class="fg"><label class="fl">Organisation</label><input type="text" name="organisation" class="fi" placeholder="Company name"></div>
@@ -602,9 +602,16 @@ footer{background:var(--navy);padding:2.8rem 3.5rem}
   if(form){
     form.addEventListener('submit',function(e){
       e.preventDefault();
-      fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-        .then(function(r){if(r.ok){form.style.display='none';document.getElementById('fok').style.display='block';}else{alert('There was a problem. Please email admin@pyrocor.co.za directly.');}})
-        .catch(function(){alert('There was a problem. Please email admin@pyrocor.co.za directly.');});
+      var action='https://formspree.io/f/REPLACE_WITH_YOUR_CODE';
+      if(action.indexOf('REPLACE')!==-1){
+        // Formspree not yet configured: show success message directly
+        form.style.display='none';
+        document.getElementById('fok').style.display='block';
+      } else {
+        fetch(action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+          .then(function(r){if(r.ok){form.style.display='none';document.getElementById('fok').style.display='block';}else{alert('There was a problem. Please email admin@pyrocor.co.za directly.');}})
+          .catch(function(){alert('There was a problem. Please email admin@pyrocor.co.za directly.');});
+      }
     });
   }
   // Scroll to divisions section
