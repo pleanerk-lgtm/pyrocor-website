@@ -1116,6 +1116,220 @@ body {
   .card-grid, .card-grid-3 { grid-template-columns: 1fr; }
   .div-stat-row { grid-template-columns: 1fr 1fr; }
   .div-stat:last-child { border-right: none; grid-column: 1 / -1; border-top: 1px solid #e8e5de; }
+
+  /* ── ALL PAGES: kill horizontal overflow on mobile ───────────────────── */
+  #about-page, #esg-page, #contact-landing {
+    overflow-x: hidden;
+  }
+  #about-page .div-hero, #esg-page .div-hero,
+  #about-page .div-section, #esg-page .div-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #about-page .div-content, #esg-page .div-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* collapse inline-styled grids on about/esg — not landing or portals */
+  #about-page [style*="grid-template-columns:repeat"],
+  #esg-page  [style*="grid-template-columns:repeat"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* service list in about/esg */
+  #about-page .svc-item,
+  #esg-page .svc-item {
+    grid-template-columns: 40px 1fr !important;
+  }
+  /* ESG credential rows */
+  #esg-page .esg-credential-row {
+    flex-wrap: wrap; gap: 8px;
+  }
+  /* contact page padding */
+  #contact-landing > div { padding-left: 20px !important; padding-right: 20px !important; }
+  /* callout boxes */
+  #about-page [style*="border-left:3px"],
+  #esg-page  [style*="border-left:3px"] {
+    padding: 18px 20px !important;
+  }
+  /* integrated thesis on landing — collapse on tiny screens */
+  .thesis-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── CONTACT PAGE ───────────────────────────────────────────────────────── */
+.contact-page-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 72px;
+  align-items: start;
+  padding: 64px 56px 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+.contact-eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #b8860b;
+  display: block; margin-bottom: 16px;
+}
+.contact-heading {
+  font-size: clamp(24px, 3vw, 38px); font-weight: 200;
+  line-height: 1.2; letter-spacing: -0.02em; color: #1a1a1a;
+  margin-bottom: 16px;
+}
+.contact-heading strong { font-weight: 500; }
+.contact-sub {
+  font-size: 14px; font-weight: 300; color: #666;
+  line-height: 1.75; margin-bottom: 28px;
+}
+.contact-details-panel {
+  border: 1px solid #e8e5de; background: #fff;
+  display: flex; flex-direction: column;
+}
+.contact-detail-row {
+  display: flex; border-bottom: 1px solid #e8e5de;
+  align-items: stretch;
+}
+.contact-detail-row-last { border-bottom: none; }
+.contact-detail-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #aaa;
+  padding: 12px 14px; min-width: 88px;
+  border-right: 1px solid #e8e5de; flex-shrink: 0;
+  display: flex; align-items: center;
+}
+.contact-detail-value {
+  font-size: 13px; color: #555;
+  padding: 12px 14px; font-family: 'DM Sans', sans-serif;
+  display: flex; align-items: center;
+}
+.contact-detail-link { color: #b8860b; text-decoration: none; }
+.contact-form-block {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.contact-field {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.contact-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+}
+.contact-input {
+  border: 1px solid #e8e5de; background: #fff;
+  padding: 13px 14px; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 400; color: #1a1a1a;
+  outline: none; border-radius: 0; width: 100%;
+  transition: border-color 0.2s; box-sizing: border-box;
+}
+.contact-textarea { resize: vertical; }
+.contact-submit {
+  display: inline-block; background: #1a1a1a; color: #fff;
+  border: none; padding: 14px 32px;
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; align-self: flex-start;
+  transition: background 0.2s;
+}
+
+/* Contact page mobile */
+@media (max-width: 768px) {
+  .contact-page-body {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 36px 24px 56px;
+  }
+}
+@media (max-width: 480px) {
+  .contact-page-body { padding: 28px 20px 48px; }
+  .contact-heading { font-size: 26px; }
+}
+
+/* ── MOBILE NAV ─────────────────────────────────────────────────────────── */
+.top-nav-desktop { display: flex; align-items: center; gap: 28px; }
+.hamburger-btn {
+  display: none;
+  flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.hamburger-btn span {
+  display: block; width: 22px; height: 1.5px;
+  background: #2c2c2c; transition: all 0.25s;
+}
+.mobile-menu {
+  display: none;
+  position: fixed; top: 57px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e8e5de;
+  padding: 8px 0; z-index: 199;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #2c2c2c; text-decoration: none;
+  padding: 14px 28px;
+  border-bottom: 1px solid #f0ede8;
+  display: block;
+  transition: background 0.15s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:active { background: #f9f8f5; }
+
+/* Mobile nav toggle */
+@media (max-width: 600px) {
+  .hamburger-btn { display: flex; }
+  .top-nav-desktop { display: none; }
+}
+
+/* Landing page mobile */
+@media (max-width: 600px) {
+  .landing-hero { padding: 36px 20px 28px; }
+  .landing-headline { font-size: clamp(28px, 8vw, 44px); }
+  .landing-descriptor { font-size: 14px; }
+  .tombstone-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tombstone { min-width: 0; }
+}
+
+/* Division pages mobile — scoped away from landing */
+@media (max-width: 600px) {
+  .division-page .div-hero  { padding: 32px 20px 28px; }
+  .division-page .div-content { padding: 0 20px 48px; }
+  .division-page .div-section { padding: 32px 0; }
+  .division-page .two-col { grid-template-columns: 1fr; gap: 24px; }
+  .division-page .div-stat-row { grid-template-columns: 1fr 1fr; gap: 0; }
+  .division-page .card-grid,
+  .division-page .card-grid-3 { grid-template-columns: 1fr; }
+  .division-page .cta-strip { padding: 28px 20px; gap: 16px; }
+  .division-page .service-list .svc-item { padding: 16px 0; }
+  .division-page .process-timeline { gap: 0; }
+}
+
+/* About/ESG pages mobile — scoped */
+@media (max-width: 600px) {
+  #about-page .div-hero,
+  #esg-page .div-hero   { padding: 32px 20px 28px; }
+  #about-page .div-content,
+  #esg-page .div-content  { padding: 0 20px 48px; }
+  #about-page .div-section,
+  #esg-page .div-section  { padding: 32px 0; }
+  #about-page .two-col,
+  #esg-page .two-col      { grid-template-columns: 1fr; gap: 24px; }
+  #about-page .card-grid,
+  #about-page .card-grid-3,
+  #esg-page .card-grid,
+  #esg-page .card-grid-3  { grid-template-columns: 1fr; }
+  #about-page .cta-strip,
+  #esg-page .cta-strip    { padding: 28px 20px; gap: 16px; }
+  #about-page .service-list .svc-item,
+  #esg-page .service-list .svc-item { padding: 16px 0; }
+  /* contact form */
+  .contact-inner { padding: 24px 20px !important; }
 }
 </style>
 </head>
@@ -1129,31 +1343,35 @@ body {
   <!-- top bar -->
   <header class="top-bar">
     <div class="pyrocor-topbar-identity" onclick="showLanding()">
-      <svg width="22" height="26" viewBox="0 0 48 56" fill="none">
+      <svg width="22" height="26" viewBox="0 0 40 56" fill="none">
         <rect x="3.5" y="2" width="2.5" height="52" fill="#2c2c2c"/>
-                  <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#b8860b" stroke-width="7" fill="none" stroke-linecap="butt"/>
-                  <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#f7f6f2" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
+        <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#b8860b" stroke-width="7" fill="none" stroke-linecap="butt"/>
+        <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#f7f6f2" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
       </svg>
       <div class="pyrocor-topbar-rule"></div>
       <span class="pyrocor-topbar-word">PYROCOR</span>
     </div>
-    <div style="display:flex;align-items:center;gap:28px">
+    <!-- Desktop nav -->
+    <div class="top-nav-desktop">
       <a href="#" onclick="showAbout();return false;" class="top-nav-link">About</a>
       <a href="#" onclick="showESG();return false;" class="top-nav-link" style="color:#3a5e38" onmouseover="this.style.color='#4e7a4b'" onmouseout="this.style.color='#3a5e38'">ESG</a>
       <a href="mailto:admin@pyrocor.co.za" class="top-nav-email">admin@pyrocor.co.za</a>
     </div>
+    <!-- Mobile hamburger -->
+    <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- Mobile dropdown menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#" onclick="closeMobileMenu();showAbout();return false;">About</a>
+    <a href="#" onclick="closeMobileMenu();showESG();return false;" style="color:#3a5e38">ESG</a>
+    <a href="#" onclick="closeMobileMenu();showContact();return false;">Contact</a>
+  </div>
 
   <!-- hero quote -->
   <main class="landing-hero">
-    <div class="landing-identity" style="display:flex;align-items:center;gap:16px;margin-bottom:44px">
-      <svg width="44" height="52" viewBox="0 0 40 56" fill="none">
-        <rect x="3.5" y="2" width="2.5" height="52" fill="#2c2c2c"/>
-        <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#b8860b" stroke-width="7" fill="none" stroke-linecap="butt"/>
-        <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#f9f8f5" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
-      </svg>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:22px;letter-spacing:0.32em;text-transform:uppercase;color:#2c2c2c;line-height:1;padding-right:0.32em">PYROCOR</span>
-    </div>
     <p class="location-tag">Johannesburg &nbsp;&middot;&nbsp; Southern Africa &nbsp;&middot;&nbsp; SADC</p>
     <p class="landing-headline">
       We find, structure and place<br>
@@ -1169,7 +1387,12 @@ body {
 
     <div class="portal portal-advisory" style="--accent-color:#7a4a2a" onclick="showDivision('advisory')">
       <div class="portal-mobile-inner">
-        <div class="portal-wordmark-block">
+        <div class="portal-wordmark-block" style="display:flex;align-items:center;gap:10px">
+          <svg width="18" height="22" viewBox="0 0 40 56" fill="none" style="flex-shrink:0">
+            <rect x="3.5" y="2" width="2.5" height="52" fill="#2c2c2c"/>
+            <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#7a4a2a" stroke-width="7" fill="none" stroke-linecap="butt"/>
+            <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#fffef9" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
+          </svg>
           <span class="div-wm div-wm-lg"><span class="wm-base">PYROCOR</span> <span class="wm-div wm-adv">ADVISORY</span></span>
         </div>
         <span class="portal-tag">Debt Origination &amp; Arrangement</span>
@@ -1188,7 +1411,12 @@ body {
 
     <div class="portal portal-trading" style="--accent-color:#2e5068" onclick="showDivision('trading')">
       <div class="portal-mobile-inner">
-        <div class="portal-wordmark-block">
+        <div class="portal-wordmark-block" style="display:flex;align-items:center;gap:10px">
+          <svg width="18" height="22" viewBox="0 0 40 56" fill="none" style="flex-shrink:0">
+            <rect x="3.5" y="2" width="2.5" height="52" fill="#2c2c2c"/>
+            <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#2e5068" stroke-width="7" fill="none" stroke-linecap="butt"/>
+            <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#f5f1e8" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
+          </svg>
           <span class="div-wm div-wm-lg"><span class="wm-base">PYROCOR</span> <span class="wm-div wm-trd">TRADING</span></span>
         </div>
         <span class="portal-tag">Physical Commodity Trading</span>
@@ -1207,7 +1435,12 @@ body {
 
     <div class="portal portal-capital" style="--accent-color:#3a5e38" onclick="showDivision('capital')">
       <div class="portal-mobile-inner">
-        <div class="portal-wordmark-block">
+        <div class="portal-wordmark-block" style="display:flex;align-items:center;gap:10px">
+          <svg width="18" height="22" viewBox="0 0 40 56" fill="none" style="flex-shrink:0">
+            <rect x="3.5" y="2" width="2.5" height="52" fill="#2c2c2c"/>
+            <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#3a5e38" stroke-width="7" fill="none" stroke-linecap="butt"/>
+            <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#f2f6f1" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
+          </svg>
           <span class="div-wm div-wm-lg"><span class="wm-base">PYROCOR</span> <span class="wm-div wm-cap">CAPITAL</span></span>
         </div>
         <span class="portal-tag">Investment &amp; Fund Management</span>
@@ -2267,42 +2500,48 @@ body {
       <a href="#" onclick="showAbout();return false;">About</a>
     </div>
   </nav>
-  <div style="padding:80px 56px;flex:1">
-  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:96px;align-items:start">
-    <div>
-      <span style="font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#c8a96e;display:block;margin-bottom:20px">Get in Touch</span>
-      <h2 style="font-size:clamp(24px,3vw,38px);font-weight:200;line-height:1.2;letter-spacing:-0.02em;color:#1a1a1a;margin-bottom:20px">Send us a <strong style="font-weight:500">direct message.</strong></h2>
-      <p style="font-size:15px;font-weight:300;color:#666;line-height:1.75;margin-bottom:32px">Whether you are a borrower seeking structured capital, a lender seeking origination, or a capital markets partner looking for a SADC deal flow relationship, our team will respond with the right expertise for your enquiry.</p>
-      <div style="display:flex;flex-direction:column;gap:0;border:1px solid #e8e5de;background:#fff">
-        <div style="display:flex;border-bottom:1px solid #e8e5de">
-          <span style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;padding:13px 16px;min-width:90px;border-right:1px solid #e8e5de;flex-shrink:0">Email</span>
-          <a href="mailto:admin@pyrocor.co.za" style="font-size:13px;color:#b8860b;padding:13px 16px;text-decoration:none;font-family:'DM Sans',sans-serif;">admin@pyrocor.co.za</a>
+  <div class="contact-page-body">
+
+    <!-- header block -->
+    <div class="contact-header-block">
+      <span class="contact-eyebrow">Get in Touch</span>
+      <h2 class="contact-heading">Send us a <strong>direct message.</strong></h2>
+      <p class="contact-sub">Whether you are a borrower seeking structured capital, a lender seeking origination, or a capital markets partner looking for a SADC deal flow relationship, our team will respond with the right expertise for your enquiry.</p>
+
+      <!-- contact details panel -->
+      <div class="contact-details-panel">
+        <div class="contact-detail-row">
+          <span class="contact-detail-label">Email</span>
+          <a href="mailto:admin@pyrocor.co.za" class="contact-detail-value contact-detail-link">admin@pyrocor.co.za</a>
         </div>
-        <div style="display:flex;border-bottom:1px solid #e8e5de">
-          <span style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;padding:13px 16px;min-width:90px;border-right:1px solid #e8e5de;flex-shrink:0">Location</span>
-          <span style="font-size:13px;color:#555;padding:13px 16px">Johannesburg, Gauteng, South Africa</span>
+        <div class="contact-detail-row">
+          <span class="contact-detail-label">Location</span>
+          <span class="contact-detail-value">Johannesburg, South Africa</span>
         </div>
-        <div style="display:flex">
-          <span style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;padding:13px 16px;min-width:90px;border-right:1px solid #e8e5de;flex-shrink:0">Response</span>
-          <span style="font-size:13px;color:#555;padding:13px 16px">Within one business day from the relevant senior team member</span>
+        <div class="contact-detail-row contact-detail-row-last">
+          <span class="contact-detail-label">Response</span>
+          <span class="contact-detail-value">Within one business day</span>
         </div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <label style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#1a1a1a">Name</label>
-        <input type="text" placeholder="Your name" style="border:1px solid #e8e5de;background:#fff;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:#1a1a1a;outline:none;border-radius:0;width:100%;transition:border-color 0.2s" onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#e8e5de'">
+
+    <!-- form block -->
+    <div class="contact-form-block">
+      <div class="contact-field">
+        <label class="contact-label">Name</label>
+        <input type="text" placeholder="Your name" class="contact-input" onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#e8e5de'">
       </div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <label style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#1a1a1a">Email</label>
-        <input type="email" placeholder="your@email.com" style="border:1px solid #e8e5de;background:#fff;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:#1a1a1a;outline:none;border-radius:0;width:100%;transition:border-color 0.2s" onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#e8e5de'">
+      <div class="contact-field">
+        <label class="contact-label">Email</label>
+        <input type="email" placeholder="your@email.com" class="contact-input" onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#e8e5de'">
       </div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <label style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#1a1a1a">Message</label>
-        <textarea rows="5" placeholder="Tell us about the opportunity or enquiry..." style="border:1px solid #e8e5de;background:#fff;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:#1a1a1a;outline:none;border-radius:0;resize:vertical;width:100%;transition:border-color 0.2s" onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#e8e5de'"></textarea>
+      <div class="contact-field">
+        <label class="contact-label">Message</label>
+        <textarea rows="5" placeholder="Tell us about the opportunity or enquiry..." class="contact-input contact-textarea" onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#e8e5de'"></textarea>
       </div>
-      <button onclick="this.innerText='Sent';this.style.background='#3a5e38'" style="display:inline-block;background:#1a1a1a;color:#fff;border:none;padding:14px 36px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;align-self:flex-start;transition:background 0.2s" onmouseover="if(this.innerText!=='Sent')this.style.background='#333'" onmouseout="if(this.innerText!=='Sent')this.style.background='#1a1a1a'">Send Message</button>
+      <button class="contact-submit" onclick="this.innerText='Sent';this.style.background='#3a5e38'" onmouseover="if(this.innerText!=='Sent')this.style.background='#333'" onmouseout="if(this.innerText!=='Sent')this.style.background='#1a1a1a'">Send Message</button>
     </div>
+
   </div>
 
 
@@ -2329,6 +2568,22 @@ body {
 
 
 <script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger-btn');
+  menu.classList.toggle('open');
+  const isOpen = menu.classList.contains('open');
+  btn.querySelector('span:nth-child(1)').style.transform = isOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+  btn.querySelector('span:nth-child(2)').style.opacity = isOpen ? '0' : '1';
+  btn.querySelector('span:nth-child(3)').style.transform = isOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+}
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger-btn');
+  menu.classList.remove('open');
+  btn.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}
+
 function showLanding() {
   document.getElementById('landing').style.display = 'flex';
   document.getElementById('div-advisory').classList.remove('active');
@@ -2365,6 +2620,7 @@ function showESG() {
     document.getElementById('div-' + d).classList.remove('active');
   });
   document.getElementById('contact-landing').style.display = 'none';
+  closeMobileMenu();
   document.getElementById('about-page').style.display = 'none';
   document.getElementById('esg-page').style.display = 'flex';
   window.scrollTo({ top: 0 });
