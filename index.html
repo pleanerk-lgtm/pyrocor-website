@@ -1100,8 +1100,13 @@ body {
   .div-hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .div-stat-row { grid-template-columns: repeat(3, 1fr); }
   .div-content { padding: 0 28px 64px; }
-  .svc-item { grid-template-columns: 44px 1fr; }
-  .svc-desc { grid-column: 2; margin-top: 8px; }
+  .svc-item {
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .svc-n { grid-column: 1; grid-row: 1; padding-top: 2px; }
+  .svc-title { grid-column: 2; grid-row: 1; padding-right: 0; }
+  .svc-desc { grid-column: 1 / -1; grid-row: 2; margin-top: 8px; padding-top: 0; }
   .two-col { grid-template-columns: 1fr; gap: 0; }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .card-grid-2 { grid-template-columns: 1fr; }
@@ -1138,8 +1143,15 @@ body {
   /* service list in about/esg */
   #about-page .svc-item,
   #esg-page .svc-item {
-    grid-template-columns: 40px 1fr !important;
+    grid-template-columns: 44px 1fr !important;
+    grid-template-rows: auto auto;
   }
+  #about-page .svc-item .svc-n,
+  #esg-page .svc-item .svc-n { grid-column: 1; grid-row: 1; }
+  #about-page .svc-item .svc-title,
+  #esg-page .svc-item .svc-title { grid-column: 2; grid-row: 1; padding-right: 0; }
+  #about-page .svc-item .svc-desc,
+  #esg-page .svc-item .svc-desc { grid-column: 1 / -1; grid-row: 2; margin-top: 8px; }
   /* ESG credential rows */
   #esg-page .esg-credential-row {
     flex-wrap: wrap; gap: 8px;
@@ -1153,6 +1165,45 @@ body {
   }
   /* integrated thesis on landing — collapse on tiny screens */
   .thesis-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── ABOUT STRATEGY GRID ────────────────────────────────────────────────── */
+.about-strategy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #e8e5de;
+  border: 1px solid #e8e5de;
+}
+.about-strategy-item {
+  background: #fff;
+  padding: 20px 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.about-strategy-n {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  flex-shrink: 0;
+  width: 44px;
+}
+.about-strategy-item div {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.65;
+  font-family: 'DM Sans', sans-serif;
+}
+.about-strategy-item strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+@media (max-width: 560px) {
+  .about-strategy-grid { grid-template-columns: 1fr; }
 }
 
 /* ── CONTACT PAGE ───────────────────────────────────────────────────────── */
@@ -1259,13 +1310,15 @@ body {
 }
 .mobile-menu {
   display: none;
-  position: fixed; top: 57px; left: 0; right: 0;
-  background: rgba(255,255,255,0.98);
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.99);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid #e8e5de;
-  padding: 8px 0; z-index: 199;
+  border-bottom: 2px solid #e8e5de;
+  padding-top: 64px; /* clears the fixed top bar */
+  padding-bottom: 8px;
+  z-index: 198;
   flex-direction: column;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
@@ -2308,45 +2361,25 @@ body {
   <div class="div-content">
 
     <div class="div-section">
-      <span class="div-section-tag">Strategy One: Advisory</span>
-      <div class="two-col">
-        <div>
-          <h2>The advisory gap:<br><em>debt that banks<br>will not build.</em></h2>
-          <p>Mid-market businesses across SADC carry real asset value on their balance sheets, commodity stocks, trade receivables, metal inventory, contracted offtake, that conventional banking lines chronically undervalue or decline to lend against. The credit exists. The structure does not.</p>
-          <p>Pyrocor Advisory closes that gap as an independent originating arranger. We originate the borrower, build the facility structure from first principles using commodity market knowledge that most credit advisors do not possess, produce institutional-quality documentation, and place the facility with non-bank lenders, family offices and private credit funds who understand the asset class.</p>
-          <p>The arrangement fee is paid by the borrower at closing, from facility proceeds. No capital deployed. No balance sheet risk. Pure execution.</p>
+      <span class="div-section-tag" style="color:#7a4a2a">Strategy One: Advisory</span>
+      <h2>The advisory gap:<br><em>debt that banks will not build.</em></h2>
+      <p style="font-size:14px;color:#555;line-height:1.75;max-width:720px;margin-bottom:28px">Mid-market SADC businesses carry liquid assets on their balance sheets that banks decline to lend against. Pyrocor Advisory closes that gap as an independent originating arranger. We originate, structure, document and place. Arrangement fee paid at closing from facility proceeds.</p>
+      <div class="about-strategy-grid">
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#7a4a2a">01</span>
+          <div><strong>Deal Origination</strong> — commodity network surfaces opportunities that never reach a bank desk.</div>
         </div>
-        <div>
-          <div class="service-list" style="border:1px solid #e8e5de">
-            <div class="svc-item" style="padding:20px 24px;border-bottom:1px solid #e8e5de;display:grid;grid-template-columns:56px 1fr;gap:0">
-              <span class="svc-n" style="font-size:10px;color:#b8860b;letter-spacing:0.08em;padding-top:3px">01</span>
-              <div>
-                <div style="font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:4px">Deal Origination</div>
-                <div style="font-size:12px;color:#777;line-height:1.6">We identify creditworthy borrowers before the market does. Our commodity network surfaces opportunities that never reach a bank desk.</div>
-              </div>
-            </div>
-            <div class="svc-item" style="padding:20px 24px;border-bottom:1px solid #e8e5de;display:grid;grid-template-columns:56px 1fr;gap:0">
-              <span class="svc-n" style="font-size:10px;color:#b8860b;letter-spacing:0.08em;padding-top:3px">02</span>
-              <div>
-                <div style="font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:4px">Facility Structuring</div>
-                <div style="font-size:12px;color:#777;line-height:1.6">Instrument, security, covenants and tenor: built from the asset up, not from the credit template down. Bankable structures that lenders can approve.</div>
-              </div>
-            </div>
-            <div class="svc-item" style="padding:20px 24px;border-bottom:1px solid #e8e5de;display:grid;grid-template-columns:56px 1fr;gap:0">
-              <span class="svc-n" style="font-size:10px;color:#b8860b;letter-spacing:0.08em;padding-top:3px">03</span>
-              <div>
-                <div style="font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:4px">Capital Placement</div>
-                <div style="font-size:12px;color:#777;line-height:1.6">Non-bank lenders, family offices, DFIs and private credit funds. We place what banks decline to build.</div>
-              </div>
-            </div>
-            <div class="svc-item" style="padding:20px 24px;display:grid;grid-template-columns:56px 1fr;gap:0">
-              <span class="svc-n" style="font-size:10px;color:#b8860b;letter-spacing:0.08em;padding-top:3px">04</span>
-              <div>
-                <div style="font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:4px">Asset-Backed Structuring</div>
-                <div style="font-size:12px;color:#777;line-height:1.6">Commodity stocks, receivables, inventory positions. We price them from the market, not the credit committee. Liquid assets converted into fundable credit.</div>
-              </div>
-            </div>
-          </div>
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#7a4a2a">02</span>
+          <div><strong>Facility Structuring</strong> — built from the asset up. Bankable structures lenders can approve.</div>
+        </div>
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#7a4a2a">03</span>
+          <div><strong>Capital Placement</strong> — non-bank lenders, family offices and DFIs. We place what banks decline.</div>
+        </div>
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#7a4a2a">04</span>
+          <div><strong>Asset-Backed Structuring</strong> — commodity stocks and receivables priced from the market up.</div>
         </div>
       </div>
     </div>
@@ -2392,36 +2425,25 @@ body {
     </div>
 
     <div class="div-section">
-      <span class="div-section-tag">Strategy Three: Capital</span>
-      <div class="two-col">
-        <div>
-          <h2>Capital deployed<br>where the <em>market<br>cannot reach.</em></h2>
-          <p>The same origination network and technical depth that drives Advisory and Trading creates a third activity: deploying and managing capital into opportunities that conventional fund managers and institutional investors cannot access directly. We invest, we manage third-party capital, and we originate deal flow for external funds seeking SADC exposure.</p>
-          <p>Our investment focus follows the same logic as the other two strategies, energy transition infrastructure, food systems and agricultural supply chains, and industrial technology applied to real SADC problems. The common thread is real assets, real cash flows, and a market position that our network makes possible and that a desk-based fund manager cannot replicate.</p>
+      <span class="div-section-tag" style="color:#3a5e38">Strategy Three: Capital</span>
+      <h2>Capital deployed where<br><em>the market cannot reach.</em></h2>
+      <p style="font-size:14px;color:#555;line-height:1.75;max-width:720px;margin-bottom:28px">The same origination network that drives Advisory and Trading creates a third activity. We deploy capital, manage it on behalf of aligned investors, and originate deal flow for external funds seeking SADC exposure.</p>
+      <div class="about-strategy-grid">
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#3a5e38">01</span>
+          <div><strong>Direct Investment</strong> — own capital into real assets and conviction positions.</div>
         </div>
-        <div>
-          <div class="card-grid card-grid-2" style="grid-template-columns:1fr 1fr">
-            <div class="cg-item">
-              <span class="cg-n" style="color:#3a5e38">Activity 01</span>
-              <h4>Direct Investment</h4>
-              <p>Own capital into conviction positions. Real assets, real cash flows, our network creates the information edge.</p>
-            </div>
-            <div class="cg-item">
-              <span class="cg-n" style="color:#3a5e38">Activity 02</span>
-              <h4>Capital Management</h4>
-              <p>Managing third-party capital from aligned investors and family offices who want SADC exposure without the origination infrastructure.</p>
-            </div>
-            <div class="cg-item">
-              <span class="cg-n" style="color:#3a5e38">Activity 03</span>
-              <h4>Deal Origination</h4>
-              <p>Sourcing and packaging SADC investment opportunities for external PE funds, credit funds and family offices with Africa mandates.</p>
-            </div>
-            <div class="cg-item">
-              <span class="cg-n" style="color:#3a5e38">Focus Areas</span>
-              <h4>Where We Look</h4>
-              <p>Energy transition. Food and agricultural supply chains. Industrial technology. SADC real assets with clear underlying value.</p>
-            </div>
-          </div>
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#3a5e38">02</span>
+          <div><strong>Capital Management</strong> — third-party capital from family offices wanting SADC exposure.</div>
+        </div>
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#3a5e38">03</span>
+          <div><strong>Deal Origination</strong> — packaging SADC opportunities for PE funds and family offices with Africa mandates.</div>
+        </div>
+        <div class="about-strategy-item">
+          <span class="about-strategy-n" style="color:#3a5e38">Focus</span>
+          <div><strong>Where We Look</strong> — energy transition, food systems, industrial technology, SADC real assets.</div>
         </div>
       </div>
     </div>
