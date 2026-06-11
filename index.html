@@ -12,6 +12,7 @@
 <style>
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { color-scheme: light only; }
 html, body { height: 100%; }
 body {
   font-family: 'DM Sans', sans-serif;
@@ -372,6 +373,10 @@ body {
   padding: 56px 48px 56px;
   text-align: center;
   background: #f9f8f5;
+}
+.landing-hero-mark {
+  margin-bottom: 28px;
+  opacity: 0.92;
 }
 .location-tag {
   font-size: 10px;
@@ -1167,6 +1172,13 @@ body {
   .thesis-grid { grid-template-columns: 1fr !important; }
 }
 
+/* ── ABOUT THESIS GRID (final section) ────────────────────────────────────── */
+.about-thesis-grid > div { padding: 28px 24px; }
+@media (max-width: 768px) {
+  .about-thesis-grid { grid-template-columns: 1fr !important; }
+  .about-thesis-grid > div { padding: 22px 20px; }
+}
+
 /* ── ABOUT STRATEGY GRID ────────────────────────────────────────────────── */
 .about-strategy-grid {
   display: grid;
@@ -1273,6 +1285,7 @@ body {
   font-size: 14px; font-weight: 400; color: #1a1a1a;
   outline: none; border-radius: 0; width: 100%;
   transition: border-color 0.2s; box-sizing: border-box;
+  color-scheme: light;
 }
 .contact-textarea { resize: vertical; }
 .contact-submit {
@@ -1316,7 +1329,7 @@ body {
   border-bottom: 2px solid #e8e5de;
   padding-top: 64px; /* clears the fixed top bar */
   padding-bottom: 8px;
-  z-index: 198;
+  z-index: 500;
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
@@ -1342,9 +1355,16 @@ body {
 
 /* Landing page mobile */
 @media (max-width: 600px) {
-  .landing-hero { padding: 36px 20px 28px; }
-  .landing-headline { font-size: clamp(28px, 8vw, 44px); }
-  .landing-descriptor { font-size: 14px; }
+  .landing-hero { padding: 56px 24px 36px; }
+  .landing-hero { align-items: flex-start; text-align: left; }
+  .landing-hero-mark { width: 36px; height: 50px; margin-bottom: 28px; align-self: flex-start; }
+  .location-tag, .landing-headline, .landing-rule, .landing-descriptor, .landing-sub { text-align: left; }
+  .landing-rule { margin-left: 0; margin-right: auto; }
+  .location-tag { font-size: 9px; letter-spacing: 0.18em; margin-bottom: 24px; }
+  .landing-headline { font-size: clamp(26px, 7.5vw, 40px); line-height: 1.18; }
+  .landing-rule { margin: 28px 0; }
+  .landing-descriptor { font-size: 14px; line-height: 1.5; }
+  .landing-sub { font-size: 13px; margin-top: 4px; }
   .tombstone-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .tombstone { min-width: 0; }
 }
@@ -1425,14 +1445,20 @@ body {
 
   <!-- hero quote -->
   <main class="landing-hero">
+    <svg class="landing-hero-mark" width="36" height="50" viewBox="0 0 40 56" fill="none">
+      <rect x="3.5" y="2" width="2.5" height="52" fill="#2c2c2c"/>
+      <path d="M6 3 C6 3 34 3 34 16.5 C34 30 6 30 6 30" stroke="#b8860b" stroke-width="7" fill="none" stroke-linecap="butt"/>
+      <path d="M6 9 C6 9 27 9 27 16.5 C27 24 6 24 6 24" stroke="#f9f8f5" stroke-width="3.5" fill="none" stroke-linecap="butt"/>
+    </svg>
     <p class="location-tag">Johannesburg &nbsp;&middot;&nbsp; Southern Africa &nbsp;&middot;&nbsp; SADC</p>
     <p class="landing-headline">
-      We find, structure and place<br>
-      the deals the market <strong>cannot see.</strong>
+      We build the corridors<br>
+      between fragmented markets<br>
+      and <strong>global capital.</strong>
     </p>
     <div class="landing-rule"></div>
     <p class="landing-descriptor">Mid-market debt origination and commodity trading across Southern Africa.</p>
-    <p class="landing-sub">Advisory. Trading. Capital. Three integrated disciplines built on two decades of on-the-ground market knowledge across SADC.</p>
+    <p class="landing-sub">Advisory structures the capital. Trading builds the corridor. Capital funds what the corridor creates. Two decades of on-the-ground SADC market knowledge, deployed as one integrated practice.</p>
   </main>
 
   <!-- division portals -->
@@ -1516,25 +1542,41 @@ body {
   <!-- integrated thesis strip -->
   <div style="background:#ffffff;padding:56px 48px;border-top:1px solid #e8e5de">
     <div style="max-width:1160px;margin:0 auto">
-      <p style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#aaa;margin-bottom:8px;font-family:'DM Sans',sans-serif">Why Three Divisions</p>
-      <h2 style="font-size:clamp(22px,3vw,36px);font-weight:300;color:#1a1a1a;letter-spacing:-0.02em;line-height:1.2;margin-bottom:40px;font-family:'DM Sans',sans-serif">Three disciplines that <strong style="font-weight:500">reinforce each other.</strong></h2>
+      <p style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#aaa;margin-bottom:8px;font-family:'DM Sans',sans-serif">How The Practice Works</p>
+      <h2 style="font-size:clamp(22px,3vw,36px);font-weight:300;color:#1a1a1a;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;font-family:'DM Sans',sans-serif">One thesis. <strong style="font-weight:500">Three points of leverage.</strong></h2>
+      <p style="font-size:14px;color:#666;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;max-width:680px;margin-bottom:40px">Across SADC, the most valuable assets, commodity positions, receivables, fragmented producer volume, sit in markets that conventional capital cannot reach and conventional finance cannot price. Pyrocor exists to close that gap, end to end.</p>
       <div class="thesis-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e8e5de;border:1px solid #e8e5de">
         <div style="background:#faf9f7;padding:28px 24px">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7a4a2a;display:block;margin-bottom:12px;font-family:'DM Sans',sans-serif">Advisory feeds Trading</span>
-          <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">Borrowers who need working capital against commodity inventory become trading counterparties. Credit relationships and trading relationships reinforce each other.</p>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2e5068;display:block;margin-bottom:12px;font-family:'DM Sans',sans-serif">01 &middot; Trading builds the corridor</span>
+          <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">We aggregate fragmented SADC supply, producers, miners, agricultural co-operatives, into bankable, market-ready volume and connect it directly to institutional buyers. This is the structural layer: it does not exist until we build it.</p>
         </div>
         <div style="background:#faf9f7;padding:28px 24px">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2e5068;display:block;margin-bottom:12px;font-family:'DM Sans',sans-serif">Trading feeds Advisory</span>
-          <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">Two decades of commodity trading surfaces credit opportunities before they reach a bank desk. Origination is built on trading relationships, not database searches.</p>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7a4a2a;display:block;margin-bottom:12px;font-family:'DM Sans',sans-serif">02 &middot; Advisory finances the assets</span>
+          <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">The commodity stocks, receivables and contracted offtake the corridor creates are real, liquid assets that banks decline to lend against. We structure and place the debt that conventional lenders cannot, or will not, build.</p>
         </div>
         <div style="background:#faf9f7;padding:28px 24px">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3a5e38;display:block;margin-bottom:12px;font-family:'DM Sans',sans-serif">Both feed Capital</span>
-          <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">Advisory deal flow and trading positions create the investment pipeline for Capital. Investors access SADC origination capability they cannot build themselves.</p>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3a5e38;display:block;margin-bottom:12px;font-family:'DM Sans',sans-serif">03 &middot; Capital funds what we build</span>
+          <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">Every corridor and every facility is an investable position. Capital deploys directly, manages capital for aligned investors, and gives external funds access to a SADC pipeline that does not exist anywhere else.</p>
         </div>
       </div>
     </div>
   </div>
 
+
+  <!-- why now strip -->
+  <div class="why-now-strip" style="background:#faf9f7;border-top:1px solid #e8e5de;padding:56px 48px">
+    <div class="why-now-grid" style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start">
+      <div class="why-now-head">
+        <p style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#aaa;margin-bottom:8px;font-family:'DM Sans',sans-serif">Why Now</p>
+        <h2 style="font-size:clamp(20px,2.6vw,30px);font-weight:300;color:#1a1a1a;letter-spacing:-0.02em;line-height:1.25;margin:0;font-family:'DM Sans',sans-serif">The gap is widening, <strong style="font-weight:500">not closing.</strong></h2>
+      </div>
+      <div class="why-now-body" style="display:flex;flex-direction:column;gap:14px">
+        <p style="font-size:14px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">Banks have grown more conservative just as demand for SADC commodities and agricultural output keeps rising. Mid-market businesses holding real, liquid assets are finding it harder to borrow against them.</p>
+        <p style="font-size:14px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif;margin:0">Non-bank lenders and family offices are actively seeking SADC exposure they cannot source themselves.</p>
+        <p style="font-size:14px;color:#1a1a1a;line-height:1.7;font-weight:500;font-family:'DM Sans',sans-serif;margin:0">The corridor is more valuable today than ever. The opportunity is compounding.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- contact strip — landing only -->
   <div style="background:#1e2d40;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px">
@@ -1612,8 +1654,8 @@ body {
   <div class="div-hero">
     <div class="div-hero-grid">
       <div>
-        <h1>Debt origination<br>and <em>structural<br>advisory.</em></h1>
-        <p class="div-hero-sub">We originate, structure and place mid-market debt facilities across Southern Africa and the SADC region. Senior expertise. Institutional-quality documentation. No balance sheet required.</p>
+        <h1>Financing the assets<br>that <em>fragmented markets<br>create.</em></h1>
+        <p class="div-hero-sub">Commodity stocks, receivables and contracted offtake are real, bankable assets, but conventional lenders consistently decline to lend against them. Pyrocor Advisory originates, structures and places the debt that closes that gap, across Southern Africa and the wider SADC region. Senior expertise. Institutional-quality documentation. No balance sheet required.</p>
         <div class="tombstone-row">
           <div class="tombstone">
             <span class="tombstone-label">Closed</span>
@@ -1642,8 +1684,8 @@ body {
           <div class="div-stat-l">Cross-border transaction capability</div>
         </div>
         <div class="div-stat">
-          <div class="div-stat-n">1</div>
-          <div class="div-stat-l">Senior expertise on every mandate</div>
+          <div class="div-stat-n">Asset</div>
+          <div class="div-stat-l">Backed structures, priced from the market up</div>
         </div>
       </div>
     </div>
@@ -2025,30 +2067,30 @@ body {
   <div class="div-hero">
     <div class="div-hero-grid">
       <div>
-        <h1>Capital deployed.<br><em>Returns managed.</em><br>Opportunities found.</h1>
-        <p class="div-hero-sub">Pyrocor Capital operates across three interconnected activities: direct investment into real-world opportunities, capital management on behalf of aligned investors, and deal origination for external funds and family offices seeking SADC exposure. We deploy, manage and find.</p>
+        <h1>Funding the corridors.<br><em>Investing in<br>what they build.</em></h1>
+        <p class="div-hero-sub">Every corridor Trading builds and every facility Advisory structures creates an investable position, real assets, real cash flows, in markets that conventional fund managers cannot access directly. Pyrocor Capital deploys directly into these positions, manages capital on behalf of aligned investors, and gives external funds and family offices a route into a SADC pipeline that exists nowhere else.</p>
         <div class="tombstone-row">
           <div class="tombstone">
             <span class="tombstone-label">Activity</span>
             <span class="tombstone-value">Direct Investment</span>
-            <span class="tombstone-sub">Conviction-led positions<br>in real assets &amp; growth businesses</span>
+            <span class="tombstone-sub">Into corridors and facilities<br>originated by Trading and Advisory</span>
           </div>
           <div class="tombstone">
             <span class="tombstone-label">Activity</span>
-            <span class="tombstone-value">Fund &amp; Capital Mgmt</span>
-            <span class="tombstone-sub">Managing third-party capital<br>across SADC strategies</span>
+            <span class="tombstone-value">Capital Management</span>
+            <span class="tombstone-sub">Third-party capital deployed<br>across the same pipeline</span>
           </div>
           <div class="tombstone">
             <span class="tombstone-label">Activity</span>
             <span class="tombstone-value">Deal Origination</span>
-            <span class="tombstone-sub">Sourcing SADC opportunities<br>for external funds &amp; family offices</span>
+            <span class="tombstone-sub">External funds access SADC<br>opportunities they cannot source alone</span>
           </div>
         </div>
       </div>
       <div class="div-stat-row">
         <div class="div-stat">
-          <div class="div-stat-n">3</div>
-          <div class="div-stat-l">Capital activities: deploy, manage, originate</div>
+          <div class="div-stat-n">1</div>
+          <div class="div-stat-l">Pipeline. Sourced by Trading, structured by Advisory, funded by Capital</div>
         </div>
         <div class="div-stat">
           <div class="div-stat-n">SADC</div>
@@ -2066,22 +2108,22 @@ body {
 
     <div class="div-section" id="cap-approach">
       <span class="div-section-tag">What We Do</span>
-      <h2>Three ways we <em>work with capital.</em></h2>
+      <h2>The same pipeline.<br><em>Three ways in.</em></h2>
       <div class="service-list">
         <div class="svc-item">
           <span class="svc-n">01</span>
           <div class="svc-title">Direct Investment</div>
-          <div class="svc-desc">We deploy our own capital into businesses and projects where our sector expertise, market relationships and origination network create a genuine information advantage. Real assets, real cash flows, real commercial substance. Energy transition, food systems, industrial technology and SADC real assets are our primary focus areas.</div>
+          <div class="svc-desc">We deploy our own capital into the corridors and facilities our Trading and Advisory divisions originate, alongside conviction positions in energy transition, food systems and industrial technology. Real assets, real cash flows, no information disadvantage because we built the position ourselves.</div>
         </div>
         <div class="svc-item">
           <span class="svc-n">02</span>
           <div class="svc-title">Capital Management</div>
-          <div class="svc-desc">We manage capital on behalf of aligned investors, family offices and co-investment partners who want SADC exposure but lack the on-the-ground origination and deal management capability to access it directly. We originate, structure, execute and monitor. Investors participate in the returns.</div>
+          <div class="svc-desc">Aligned investors and family offices want SADC exposure but cannot replicate our origination network. We manage their capital across the same pipeline we invest our own capital into. We originate, structure, execute and monitor. Investors participate in the returns.</div>
         </div>
         <div class="svc-item">
           <span class="svc-n">03</span>
           <div class="svc-title">Deal Origination for External Funds</div>
-          <div class="svc-desc">External private equity funds, credit funds and family offices with Africa mandates engage Pyrocor Capital to source deal flow they cannot reach through their own networks. We originate, qualify and package investment opportunities across SADC and present them to the right capital partner for each transaction.</div>
+          <div class="svc-desc">External private equity funds, credit funds and family offices with Africa mandates cannot reach the deal flow our trading and advisory relationships generate. We package and present these opportunities to the right capital partner for each transaction.</div>
         </div>
       </div>
     </div>
@@ -2367,19 +2409,19 @@ body {
       <div class="about-strategy-grid">
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#7a4a2a">01</span>
-          <div><strong>Deal Origination</strong> — commodity network surfaces opportunities that never reach a bank desk.</div>
+          <div><strong>Deal Origination:</strong> our commodity network surfaces opportunities that never reach a bank desk.</div>
         </div>
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#7a4a2a">02</span>
-          <div><strong>Facility Structuring</strong> — built from the asset up. Bankable structures lenders can approve.</div>
+          <div><strong>Facility Structuring:</strong> built from the asset up, into bankable structures lenders can approve.</div>
         </div>
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#7a4a2a">03</span>
-          <div><strong>Capital Placement</strong> — non-bank lenders, family offices and DFIs. We place what banks decline.</div>
+          <div><strong>Capital Placement:</strong> non-bank lenders, family offices and DFIs. We place what banks decline.</div>
         </div>
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#7a4a2a">04</span>
-          <div><strong>Asset-Backed Structuring</strong> — commodity stocks and receivables priced from the market up.</div>
+          <div><strong>Asset-Backed Structuring:</strong> commodity stocks and receivables priced from the market up.</div>
         </div>
       </div>
     </div>
@@ -2431,19 +2473,19 @@ body {
       <div class="about-strategy-grid">
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#3a5e38">01</span>
-          <div><strong>Direct Investment</strong> — own capital into real assets and conviction positions.</div>
+          <div><strong>Direct Investment:</strong> our own capital into real assets and conviction positions.</div>
         </div>
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#3a5e38">02</span>
-          <div><strong>Capital Management</strong> — third-party capital from family offices wanting SADC exposure.</div>
+          <div><strong>Capital Management:</strong> third-party capital from family offices wanting SADC exposure.</div>
         </div>
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#3a5e38">03</span>
-          <div><strong>Deal Origination</strong> — packaging SADC opportunities for PE funds and family offices with Africa mandates.</div>
+          <div><strong>Deal Origination:</strong> packaging SADC opportunities for PE funds and family offices with Africa mandates.</div>
         </div>
         <div class="about-strategy-item">
           <span class="about-strategy-n" style="color:#3a5e38">Focus</span>
-          <div><strong>Where We Look</strong> — energy transition, food systems, industrial technology, SADC real assets.</div>
+          <div><strong>Where We Look:</strong> energy transition, food systems, industrial technology and SADC real assets.</div>
         </div>
       </div>
     </div>
@@ -2451,7 +2493,7 @@ body {
     <div class="div-section">
       <span class="div-section-tag">The Integrated Thesis</span>
       <h2>Why three divisions<br><em>become one edge.</em></h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e8e5de;border:1px solid #e8e5de;margin-top:8px">
+      <div class="about-thesis-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e8e5de;border:1px solid #e8e5de;margin-top:8px">
         <div style="background:#fff;padding:32px 28px">
           <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#b8860b;display:block;margin-bottom:14px;font-family:'DM Sans',sans-serif">Advisory feeds Trading</span>
           <p style="font-size:13px;color:#555;line-height:1.7;font-weight:400;font-family:'DM Sans',sans-serif">Borrowers who need working capital against commodity inventory become trading counterparties. The credit relationship and the trading relationship reinforce each other.</p>
@@ -2626,6 +2668,7 @@ function showDivision(name) {
 }
 
 function showAbout() {
+  closeMobileMenu();
   document.getElementById('landing').style.display = 'none';
   ['advisory','trading','capital'].forEach(d => {
     document.getElementById('div-' + d).classList.remove('active');
@@ -2649,6 +2692,7 @@ function showESG() {
 }
 
 function showContact() {
+  closeMobileMenu();
   document.getElementById('landing').style.display = 'none';
   ['advisory','trading','capital'].forEach(d => {
     document.getElementById('div-' + d).classList.remove('active');
