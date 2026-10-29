@@ -1,0 +1,29 @@
+{
+  "routes": [
+    { "path": "/", "title": "Home" },
+    { "path": "/about", "title": "About" },
+    { "path": "/services", "title": "Services" },
+    { "path": "/services/trading", "title": "Trading" },
+    { "path": "/services/advisory", "title": "Advisory" },
+    { "path": "/services/capital", "title": "Capital" },
+    { "path": "/products", "title": "Products" },
+    { "path": "/products/energy", "title": "Energy" },
+    { "path": "/products/complex-minerals", "title": "Complex Minerals" },
+    {
+      "path": "/products/direct-shipping-ores",
+      "title": "Direct Shipping Ores"
+    },
+    {
+      "path": "/products/minor-battery-metals",
+      "title": "Minor & Battery Metals"
+    },
+    { "path": "/products/soft-commodities", "title": "Soft Commodities" },
+    {
+      "path": "/products/cementitious-products",
+      "title": "Cementitious Products"
+    },
+    { "path": "/esg", "title": "ESG & Responsible Sourcing" },
+    { "path": "/people", "title": "People" },
+    { "path": "/contact", "title": "Contact" }
+  ]
+}
